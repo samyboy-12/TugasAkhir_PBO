@@ -47,24 +47,38 @@ public class MainCharacter extends  ManKind{
         if(keyH.isUpPressed()== true || keyH.isDownPressed() == true || keyH.isLeftPressed() == true || keyH.isRightPressed()==true){
             if(keyH.isUpPressed()== true){
                 setDirection("up");
-                setY(getY() - getSpeed());
             } else if (keyH.isDownPressed() == true) {
                 setDirection("down");
-                setY(getY() + getSpeed());
 
             }
             else if(keyH.isLeftPressed()== true){
                 setDirection("left");
-                setX(getX() - getSpeed());
 
             }
             else if(keyH.isRightPressed() == true){
                 setDirection("right");
-                setX(getX() + getSpeed());
 
             }
+            //CHECK TILE COLLISION
             setCollisionOn(false);
             gp.cChecker.checkTile(this);
+
+            if(isCollisionOn() == false){
+                switch (getDirection()){
+                    case "up":
+                        setY(getY() - getSpeed());
+                        break;
+                        case "down":
+                            setY(getY() + getSpeed());
+                            break;
+                            case "left":
+                                setX(getX() - getSpeed());
+                                break;
+                                case "right":
+                                    setX(getX() + getSpeed());
+                                    break;
+                }
+            }
             // setiap hit 15 frames, the gambar will be change so it look like walking
             setSpriteCounter(getSpriteCounter() + 1);
             if(getSpriteCounter()>10){
