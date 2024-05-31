@@ -11,33 +11,33 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class TileManager {
-    private GamePanel gp;
-    private Tile[] tile;
-    private int mapTileNum[][];
+    public GamePanel gp;
+    public Tile[] tile;
+    public int mapTileNum[][];
 
-    public GamePanel getGp() {
-        return gp;
-    }
-
-    public void setGp(GamePanel gp) {
-        this.gp = gp;
-    }
-
-    public Tile[] getTile() {
-        return tile;
-    }
-
-    public void setTile(Tile[] tile) {
-        this.tile = tile;
-    }
-
-    public int[][] getMapTileNum() {
-        return mapTileNum;
-    }
-
-    public void setMapTileNum(int[][] mapTileNum) {
-        this.mapTileNum = mapTileNum;
-    }
+//    public GamePanel getGp() {
+//        return gp;
+//    }
+//
+//    public void setGp(GamePanel gp) {
+//        this.gp = gp;
+//    }
+//
+//    public Tile[] getTile() {
+//        return tile;
+//    }
+//
+//    public void setTile(Tile[] tile) {
+//        this.tile = tile;
+//    }
+//
+//    public int[][] getMapTileNum() {
+//        return mapTileNum;
+//    }
+//
+//    public void setMapTileNum(int[][] mapTileNum) {
+//        this.mapTileNum = mapTileNum;
+//    }
 
     public TileManager(GamePanel gp){
 
@@ -50,29 +50,36 @@ public class TileManager {
     public void getTileImage(){
         try{
             tile[0] = new Tile();
-            tile[0].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/floor01.png")));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/BG/floor01.png"));
 
             tile[1] = new Tile();
-            tile[1].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/wallblock.png")));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/BG/wallblock.png"));
+            tile[1].collision = true;
 
             tile[2] = new Tile();
-            tile[2].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/mejaaset.png")));
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/BG/mejaaset.png"));
+            tile[2].collision = true;
 
             tile[3] = new Tile();
-            tile[3].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/chair.png")));
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/BG/chair.png"));
+            tile[3].collision = true;
 
             tile[4] = new Tile();
-            tile[4].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/kursikiri.png")));
+            tile[4].image = ImageIO.read(getClass().getResourceAsStream("/BG/kursikiri.png"));
+            tile[4].collision = true;
 
             tile[5] = new Tile();
-            tile[5].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/kursidpn.png")));
+            tile[5].image = ImageIO.read(getClass().getResourceAsStream("/BG/kursidpn.png"));
+            tile[5].collision = true;
 
             tile[6] = new Tile();
-            tile[6].setImage(ImageIO.read(getClass().getResourceAsStream("/BG/kursikanan.png")));
+            tile[6].image = ImageIO.read(getClass().getResourceAsStream("/BG/kursikanan.png"));
+            tile[6].collision = true;
 
             tile[7] = new Tile();
             BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/BG/bed.png"));
-            tile[7].setImage(resizeImage(originalImage, gp.tileSize*2, gp.tileSize*2 ));
+            tile[7].image = resizeImage(originalImage, gp.tileSize*2, gp.tileSize*2 );
+            tile[7].collision = true;
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -163,7 +170,7 @@ public class TileManager {
         while(col<gp.maxScreenCol && row<gp.maxScreenRow ){
             int tileNum = mapTileNum[col][row];
             if(tileNum == 7){
-                g2.drawImage(tile[tileNum].getImage(),x,y,gp.tileSize*2, gp.tileSize*2, null);
+                g2.drawImage(tile[tileNum].image,x,y,gp.tileSize*2, gp.tileSize*2, null);
                 col += 2; // Lewati 1 kolom karena tile ini menempati 2 kolom
                 x += gp.tileSize * 2; // Geser posisi x untuk dua tile
                 continue;
@@ -172,7 +179,7 @@ public class TileManager {
 //                continue;
             }
             else {
-                g2.drawImage(tile[tileNum].getImage(),x,y,gp.tileSize, gp.tileSize, null);
+                g2.drawImage(tile[tileNum].image,x,y,gp.tileSize, gp.tileSize, null);
             }
             col++;
             x += gp.tileSize;
