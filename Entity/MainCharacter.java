@@ -1,5 +1,6 @@
 package Entity;
 
+import interfaces.iMovable;
 import main.GamePanel;
 import main.KeyHandler;
 
@@ -9,7 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.security.Key;
 
-public class MainCharacter extends  ManKind{
+public class MainCharacter extends ManKind implements iMovable {
     GamePanel gp;
     KeyHandler keyH;
 
