@@ -1,6 +1,8 @@
 package main;
 
 import Entity.MainCharacter;
+import objects.OBJ_Bed;
+import objects.SuperObject;
 import tile.TileManager;
 
 import javax.swing.*;
@@ -32,7 +34,15 @@ public class GamePanel extends JPanel implements Runnable{
     main.KeyHandler keyH = new main.KeyHandler();
     Thread gameThread; //can stop and run  the game, when u want to loop the proceess again and again for ex liek u loop the character 60 times per sec for make them look like moving
     public CollisionChecker cChecker = new CollisionChecker(this);
-    MainCharacter mainCharacter = new MainCharacter(this, keyH);
+    public AssetSetter aSetter = new AssetSetter(this);
+    public  UI ui = new UI(this);
+    public MainCharacter mainCharacter = new MainCharacter(this, keyH);
+    public SuperObject obj[]=new SuperObject[10];
+    public OBJ_Bed bed[] = new OBJ_Bed[10];
+
+    //game state
+    public int gameState;
+    public final int sleep = 1;
 
 
     //constructor
@@ -42,6 +52,11 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH); //recognize key input
         this.setFocusable(true);
+    }
+
+    public void setupGame(){
+        aSetter.setObject();
+//        gameState = sleep;
     }
 
     public void startGameThread(){
@@ -69,6 +84,9 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update(){ //change palyer position
+//        if(gameState == sleep){
+//
+//        }
         mainCharacter.update();
 
     }
@@ -76,7 +94,14 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; //convert g to g2 . Grpahics2d is a class that extend Graphics class
         tileM.draw(g2);
+        for(int i = 0; i<obj.length; i++){
+            if(obj[i]!=null){
+                obj[i].draw(g2,this);
+            }
+        }
         mainCharacter.draw(g2);
+        //ui
+        ui.draw(g2);
         g2.dispose();
 
     }

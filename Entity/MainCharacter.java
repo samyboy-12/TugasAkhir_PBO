@@ -20,6 +20,8 @@ public class MainCharacter extends ManKind implements iMovable {
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y=16;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 32;
         solidArea.height = 32;
         setDefaultValues();
@@ -68,6 +70,11 @@ public class MainCharacter extends ManKind implements iMovable {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
+            //check object collision
+            int objIndex = gp.cChecker.checkObject(this,true);
+            sleep(objIndex);
+
+//            check if collison false, can go
             if(collisionOn == false){
                 switch (direction){
                     case "up":
@@ -87,14 +94,33 @@ public class MainCharacter extends ManKind implements iMovable {
             // setiap hit 15 frames, the gambar will be change so it look like walking
             spriteCounter++ ;
             if(spriteCounter>10){
+//                System.out.println("spirite coun : " + spriteCounter);
+//                System.out.println(spriteNum == 2);
                 if(spriteNum == 1){
                     spriteNum = 2;
+                    System.out.println("spirit num now : " + spriteNum);
                 } else if (spriteNum ==2) {
                     spriteNum = 1;
-                } spriteNum = 0;
+                    System.out.println("spirit num now : " + spriteNum);
+                } spriteCounter = 0;
             }
         }
     }
+
+    public void sleep(int i){
+        if(i != 999){
+//            gp.obj[i] = null;
+            gp.gameState = gp.sleep;
+            gp.obj[i].speak();
+//            Bed bed = new Bed();
+//            bed.speak();
+//            System.out.println("hi");
+        }
+    }
+
+
+
+
     public void draw(Graphics2D g2){
 //        g2.setColor(Color.orange); // draw a orange rectangle
 //        g2.fillRect(100,100,tileSize,tileSize);
@@ -109,6 +135,7 @@ public class MainCharacter extends ManKind implements iMovable {
             }
                 break;
             case "down":
+//                System.out.println(spriteNum);
                 if(spriteNum== 1){
                     image = down1;
                 }if(spriteNum== 2){

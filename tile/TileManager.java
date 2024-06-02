@@ -42,7 +42,7 @@ public class TileManager {
     public TileManager(GamePanel gp){
 
         this.gp = gp;
-        tile = new Tile[10]; // 10 kinds of tile
+        tile = new Tile[1000]; // 10 kinds of tile
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         getTileImage();
         loadMap("/BG/mapswall.txt");
@@ -77,9 +77,10 @@ public class TileManager {
             tile[6].collision = true;
 
             tile[7] = new Tile();
-            BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/BG/bed.png"));
-            tile[7].image = resizeImage(originalImage, gp.tileSize*2, gp.tileSize*2 );
+            BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/objectsPict/bed.png"));
             tile[7].collision = true;
+
+//            tile[7].image = resizeImage(originalImage, gp.tileSize*2, gp.tileSize*2 );
         } catch (IOException e){
             e.printStackTrace();
         }
@@ -169,18 +170,21 @@ public class TileManager {
         int y = 0;
         while(col<gp.maxScreenCol && row<gp.maxScreenRow ){
             int tileNum = mapTileNum[col][row];
-            if(tileNum == 7){
-                g2.drawImage(tile[tileNum].image,x,y,gp.tileSize*2, gp.tileSize*2, null);
-                col += 2; // Lewati 1 kolom karena tile ini menempati 2 kolom
-                x += gp.tileSize * 2; // Geser posisi x untuk dua tile
-                continue;
-            }if(tileNum == 8){
-                x += gp.tileSize; // Geser posisi x untuk dua tile
+//            if(tileNum == 7){
+//                g2.drawImage(tile[tileNum].image,x,y,gp.tileSize*2, gp.tileSize*2, null);
+//                col += 2; // Lewati 1 kolom karena tile ini menempati 2 kolom
+//                x += gp.tileSize * 2; // Geser posisi x untuk dua tile
 //                continue;
-            }
-            else {
+//            }if(tileNum == 8){
+//                x += gp.tileSize; // Geser posisi x untuk dua tile
+////                continue;
+//            }
+//            else {
+//                g2.drawImage(tile[tileNum].image,x,y,gp.tileSize, gp.tileSize, null);
+//            }
+
                 g2.drawImage(tile[tileNum].image,x,y,gp.tileSize, gp.tileSize, null);
-            }
+
             col++;
             x += gp.tileSize;
             if(col== gp.maxScreenCol){

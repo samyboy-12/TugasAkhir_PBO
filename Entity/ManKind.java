@@ -11,7 +11,9 @@ public class ManKind {
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public Rectangle solidArea; //make abstract rect
+    public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+
 
 //    public int getX() {
 //        return x;
