@@ -80,6 +80,8 @@ public class TileManager {
             BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/objectsPict/bed.png"));
             tile[7].collision = true;
 
+
+
 //            tile[7].image = resizeImage(originalImage, gp.tileSize*2, gp.tileSize*2 );
         } catch (IOException e){
             e.printStackTrace();

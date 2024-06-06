@@ -31,18 +31,21 @@ public class GamePanel extends JPanel implements Runnable{
 
     TileManager tileM  = new TileManager(this);
 
-    main.KeyHandler keyH = new main.KeyHandler();
+    main.KeyHandler keyH = new main.KeyHandler(this);
     Thread gameThread; //can stop and run  the game, when u want to loop the proceess again and again for ex liek u loop the character 60 times per sec for make them look like moving
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public  UI ui = new UI(this);
-    public MainCharacter mainCharacter = new MainCharacter(this, keyH);
+    public MainCharacter mainCharacter = new MainCharacter(this, keyH, "Budi",10, 500000, 10);
     public SuperObject obj[]=new SuperObject[10];
-    public OBJ_Bed bed[] = new OBJ_Bed[10];
+
 
     //game state
     public int gameState;
     public final int sleep = 1;
+    public final int pauseState = 2;
+    public final int playState = 3;
+    public final int infoState = 4;
 
 
     //constructor
@@ -62,6 +65,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void startGameThread(){
         gameThread = new Thread(this);//passing game pannel class to this constructor . to initiate the thread
         gameThread.start(); //call the run method
+        gameState = playState;
     }
     @Override
     public void run() { //make a loop
@@ -84,10 +88,10 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update(){ //change palyer position
-//        if(gameState == sleep){
-//
-//        }
-        mainCharacter.update();
+        if(gameState == playState){
+            mainCharacter.update();
+        }else if (gameState == pauseState) {
+        }
 
     }
     public void paintComponent(Graphics g){ //graphic class is a class that has many object
@@ -102,6 +106,7 @@ public class GamePanel extends JPanel implements Runnable{
         mainCharacter.draw(g2);
         //ui
         ui.draw(g2);
+
         g2.dispose();
 
     }

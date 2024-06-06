@@ -30,7 +30,11 @@ public class CollisionChecker {
                         manKind.collisionOn=true;
                     }
                 }catch (ArrayIndexOutOfBoundsException e){
-                    manKind.collisionOn=true;
+                    System.out.println(manKind.x == 724);
+                    if(manKind.x == 724){
+                        manKind.collisionOn=false;
+                    }
+                    manKind.collisionOn=false;
                 }
 
                 break;
@@ -56,7 +60,11 @@ public class CollisionChecker {
                                 manKind.collisionOn=true;
                             }
                         }catch (ArrayIndexOutOfBoundsException e){
-                            manKind.collisionOn=true;
+                            System.out.println(manKind.x == 724);
+                            if(manKind.x == 724){
+                                manKind.collisionOn=false;
+                            }
+                            manKind.collisionOn=false;
                         }
 
                         break;
@@ -70,7 +78,11 @@ public class CollisionChecker {
                                     manKind.collisionOn=true;
                                 }
                             }catch (ArrayIndexOutOfBoundsException e){
-                                manKind.collisionOn=true;
+                                System.out.println(manKind.x == 724);
+                                if(manKind.x == 724){
+                                    manKind.collisionOn=false;
+                                }
+                                manKind.collisionOn=false;
                             }
 
                             break;

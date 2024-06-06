@@ -1,5 +1,7 @@
 package Entity;
 
+import main.GamePanel;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -13,9 +15,41 @@ public class ManKind {
     public Rectangle solidArea; //make abstract rect
     public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean collisionOn = false;
+    private String name;
+    private int age, money;
+    public GamePanel gp;
 
 
-//    public int getX() {
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ManKind(String name, int age, GamePanel gp) {
+        this.name = name;
+        this.age = age;
+        this.gp = gp;
+    }
+    //    public int getX() {
 //        return x;
 //    }
 //

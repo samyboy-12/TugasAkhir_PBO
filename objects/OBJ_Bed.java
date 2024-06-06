@@ -4,9 +4,14 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.awt.*;
+import main.KeyHandler;
+
 
 public class OBJ_Bed extends SuperObject{
-    public OBJ_Bed() {
+    public GamePanel gp;
+
+    public OBJ_Bed(GamePanel gp) {
         name= "Bed";
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/bed.png"));
@@ -16,12 +21,28 @@ public class OBJ_Bed extends SuperObject{
         }
         collision = true;
         setDialogue();
+        this.gp = gp;
     }
-    GamePanel gp;
+
+
     public void setDialogue(){
-        dialogues[0] = "hello";
+        dialogues[0] = "Do you want to sleep?";
+        dialogues[1] = "Press F to finish";
     }
     public void speak(){
-        gp.ui.currentdialogue = dialogues[0];
+        if (dialogues[dialogueIndex] == null){
+//            System.out.println(gp.gameState);
+//            System.out.println("hi");
+            dialogueIndex = 0;
+
+        }else {
+//            System.out.println(gp.gameState);
+//            System.out.println("hi1");
+            gp.ui.currentDialogue = dialogues[dialogueIndex];
+            dialogueIndex++;
+
+        }
+
+//        gp.ui.currentdialogue = dialogues[0];
     }
 }

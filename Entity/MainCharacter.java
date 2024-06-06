@@ -11,11 +11,31 @@ import java.io.IOException;
 import java.security.Key;
 
 public class MainCharacter extends ManKind implements iMovable {
-    GamePanel gp;
-    KeyHandler keyH;
 
-    public MainCharacter(GamePanel gp, KeyHandler keyH) {
-        this.gp = gp;
+    KeyHandler keyH;
+    private int money;
+    private int energyBar;
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getEnergyBar() {
+        return energyBar;
+    }
+
+    public void setEnergyBar(int energyBar) {
+        this.energyBar = energyBar;
+    }
+
+    public MainCharacter(GamePanel gp, KeyHandler keyH, String name, int age, int money, int energyBar) {
+        super(name, age, gp);
+        this.money = money;
+        this.energyBar = energyBar;
         this.keyH = keyH;
         solidArea = new Rectangle();
         solidArea.x = 8;
@@ -26,6 +46,7 @@ public class MainCharacter extends ManKind implements iMovable {
         solidArea.height = 32;
         setDefaultValues();
         getPlayerImage();
+        setDialogue();
     }
     public void setDefaultValues(){
         x = 100;
@@ -70,9 +91,9 @@ public class MainCharacter extends ManKind implements iMovable {
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
-            //check object collision
             int objIndex = gp.cChecker.checkObject(this,true);
-            sleep(objIndex);
+
+
 
 //            check if collison false, can go
             if(collisionOn == false){
@@ -93,7 +114,7 @@ public class MainCharacter extends ManKind implements iMovable {
             }
             // setiap hit 15 frames, the gambar will be change so it look like walking
             spriteCounter++ ;
-            if(spriteCounter>10){
+            if(spriteCounter>15){
 //                System.out.println("spirite coun : " + spriteCounter);
 //                System.out.println(spriteNum == 2);
                 if(spriteNum == 1){
@@ -107,16 +128,47 @@ public class MainCharacter extends ManKind implements iMovable {
         }
     }
 
-    public void sleep(int i){
-        if(i != 999){
+    public void sleep(){
+        int objIndex = gp.cChecker.checkObject(this,true);
+        if(objIndex != 999){
 //            gp.obj[i] = null;
+//            System.out.println(gp.obj[objIndex]);
             gp.gameState = gp.sleep;
-            gp.obj[i].speak();
+            System.out.println(gp.gameState + "ini");
+
+            gp.obj[objIndex].speak();
+
 //            Bed bed = new Bed();
 //            bed.speak();
 //            System.out.println("hi");
         }
     }
+    public String[] dialogues = new String[20];
+    public int dialogueIndex;
+
+    public void displayInfo(){}
+
+
+    public void setDialogue(){
+        dialogues[0] = "Do you want to sleep?";
+    }
+    public void speak(){
+        if (dialogues[dialogueIndex] == null){
+//            System.out.println(gp.gameState);
+//            System.out.println("hi");
+            dialogueIndex = 0;
+
+        }else {
+//            System.out.println(gp.gameState);
+//            System.out.println("hi1");
+            gp.ui.currentDialogue = dialogues[dialogueIndex];
+            dialogueIndex++;
+
+        }
+
+//        gp.ui.currentdialogue = dialogues[0];
+    }
+
 
 
 
@@ -159,4 +211,6 @@ public class MainCharacter extends ManKind implements iMovable {
         }
         g2.drawImage(image,x,y, gp.tileSize, gp.tileSize, null);
     }
+
+
 }
