@@ -44,7 +44,7 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_C) {
                     gp.mainCharacter.communicate();
                 }
-                if (code == KeyEvent.VK_T) {
+                if (code == KeyEvent.VK_J) {
                     gp.mainCharacter.interactObject();
                 }
             } else if (gp.gameState == gp.pauseState) {
@@ -67,7 +67,7 @@ public class KeyHandler implements KeyListener {
                         gp.gameState = gp.playState;
                     }
                 }
-                if (code == KeyEvent.VK_T) {
+                if (code == KeyEvent.VK_J) {
                     gp.gameState = gp.playState;
                 }
             }

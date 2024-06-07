@@ -68,7 +68,7 @@ public class MainCharacter extends ManKind implements iMovable {
     public void getPlayerImage(){
         try{
             up1 = ImageIO.read(getClass().getResourceAsStream("/assets/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/assets/boy_up_1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/assets/boy_up_2.png"));
             down1 = ImageIO.read(getClass().getResourceAsStream("/assets/boy_down_1.png"));
             down2 = ImageIO.read(getClass().getResourceAsStream("/assets/boy_down_2.png"));
             left1 = ImageIO.read(getClass().getResourceAsStream("/assets/boy_left_1.png"));
@@ -171,12 +171,12 @@ public class MainCharacter extends ManKind implements iMovable {
     }
 
     public void study() {
-        if (this.energyBar-10>0){
-            this.energyBar-=10;
+        if (this.energyBar-33>=0){
+            this.energyBar-=33;
             int objIndex = gp.cChecker.checkObject(this,true);
             if (objIndex != 999){
                 gp.obj[objIndex].interact();
-                gp.gameState = gp.dialogueState;
+                gp.gameState = gp.studyState;
             }
         }else{
             gp.ui.currentDialogue ="   Saat ini anda tidak bisa belajar karena anda kecapean. /n/n      Istirahatlah sebentar dengan membeli makan!";
@@ -191,16 +191,18 @@ public class MainCharacter extends ManKind implements iMovable {
             dialoguesMengeluhIndex = 0; // Reset ke awal jika null atau melewati batas
         }
 
-// Set dialog saat ini dan increment index
+        // Set dialog saat ini dan increment index
         if (dialoguesMengeluh[dialoguesMengeluhIndex] != null) {
             gp.ui.currentDialogue = dialoguesMengeluh[dialoguesMengeluhIndex];
+            gp.gameState = gp.dialogueState;
+            dialoguesMengeluhIndex++;
         }
     }
 
     public void setMengeluh(){
-        dialoguesMengeluh[0] = "Pemain: /nKayaknya aku butuh me time dulu deh habis belajar ini /n/n---Tekan huruf 'B' kembali untuk berhenti mengeluh---";
-        dialoguesMengeluh[1] = "Pemain: /nHaduhhh, cape banget belajar. Padahal baru 2 SKS. /n/n---Tekan huruf 'B' kembali untuk berhenti mengeluh---";
-        dialoguesMengeluh[2] = "Pemain: /nCape banget belajar, pengen ternak lele aja. /n/n---Tekan huruf 'B' kembali untuk berhenti mengeluh---";
+        dialoguesMengeluh[0] = "Pemain: /nKayaknya aku butuh me time dulu deh habis belajar ini /n/n       ---Tekan huruf 'B' untuk berhenti mengeluh---";
+        dialoguesMengeluh[1] = "Pemain: /nHaduhhh, cape banget belajar. Padahal baru 2 SKS. /n/n      ---Tekan huruf 'B' untuk berhenti mengeluh---";
+        dialoguesMengeluh[2] = "Pemain: /nCape banget belajar, pengen ternak lele aja. /n/n       ---Tekan huruf 'B' untuk berhenti mengeluh---";
     }
 
     public String[] dialogues = new String[20];

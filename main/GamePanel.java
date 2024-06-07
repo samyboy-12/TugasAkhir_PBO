@@ -7,6 +7,7 @@ import tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -52,6 +53,8 @@ public class GamePanel extends JPanel implements Runnable{
     public final int infoState = 4;
     public final int dialogueState = 5;
     public final int transitionState = 6; // State for transition
+    public final int studyState = 7; // State for transition
+
 
     //font
     Font pixelFont;
@@ -130,6 +133,20 @@ public class GamePanel extends JPanel implements Runnable{
                 gameState = playState;
                 transitionCounter = 0;
             }
+        } else if (gameState == studyState) {
+            System.out.println(transitionCounter);
+            transitionCounter++;
+            if (transitionCounter >= transitionDuration*5) {
+                if (mainCharacter.sudahMengeluh){
+                    gameState = playState;
+                    mainCharacter.sudahMengeluh = false;
+                }else if(mainCharacter.isEligibleToStudy()){
+                    mainCharacter.mengeluh();
+                }else{
+                    gameState = playState;
+                }
+                transitionCounter = 0;
+            }
         }
     }
 
@@ -197,7 +214,9 @@ public class GamePanel extends JPanel implements Runnable{
         ui.draw(g2);
 
         if (gameState == transitionState) {
-            drawTransition(g2);
+            drawTransition(g2, false);
+        } else if (gameState == studyState) {
+            drawTransition(g2, true);
         }
 
         g2.dispose();
@@ -206,19 +225,38 @@ public class GamePanel extends JPanel implements Runnable{
 
 
     //Fungsi untuk membuat gambar transisi
-    public void drawTransition(Graphics2D g2) {
+    public void drawTransition(Graphics2D g2, boolean study) {
         g2.setColor(Color.BLACK);
         g2.fillRect(0, 0, screenWidth, screenHeight);
+        String text;
 
-        // Menetapkan ukuran font yang diinginkan, misalnya 24
-        Font sizedFont = pixelFont.deriveFont(24*3f); // 24 adalah ukuran font dalam satuan poin
+        // Set the desired font size, e.g., 24
+        Font sizedFont = pixelFont.deriveFont(24 * 2f); // 24 is the font size in points
         g2.setFont(sizedFont);
 
         g2.setColor(Color.WHITE);
-        String text = "Loading map...";
+        if (study) {
+            text = "SAAT INI PEMAIN SEDANG BELAJAR.\n\nTUNGGU BEBERAPA SAAT";
+        } else {
+            text = "Loading map...";
+        }
+
+        // Split the text into lines
+        String[] lines = text.split("\n");
+
+        // Calculate the total height of the text block
         FontMetrics metrics = g2.getFontMetrics(g2.getFont());
-        int x = (screenWidth - metrics.stringWidth(text)) / 2;
-        int y = ((screenHeight - metrics.getHeight()) / 2) + metrics.getAscent();
-        g2.drawString(text, x, y);
+        int lineHeight = metrics.getHeight();
+        int textHeight = lines.length * lineHeight;
+
+        // Calculate the starting y position
+        int y = (screenHeight - textHeight) / 2 + metrics.getAscent();
+
+        // Draw each line of text
+        for (String line : lines) {
+            int x = (screenWidth - metrics.stringWidth(line)) / 2;
+            g2.drawString(line, x, y);
+            y += lineHeight;
+        }
     }
 }
