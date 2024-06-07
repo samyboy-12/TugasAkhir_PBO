@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.security.Key;
 
 public class MainCharacter extends ManKind implements iMovable {
 
@@ -119,10 +118,10 @@ public class MainCharacter extends ManKind implements iMovable {
 //                System.out.println(spriteNum == 2);
                 if(spriteNum == 1){
                     spriteNum = 2;
-                    System.out.println("spirit num now : " + spriteNum);
+//                    System.out.println("spirit num now : " + spriteNum);
                 } else if (spriteNum ==2) {
                     spriteNum = 1;
-                    System.out.println("spirit num now : " + spriteNum);
+//                    System.out.println("spirit num now : " + spriteNum);
                 } spriteCounter = 0;
             }
         }
@@ -136,7 +135,7 @@ public class MainCharacter extends ManKind implements iMovable {
             gp.gameState = gp.sleep;
             System.out.println(gp.gameState + "ini");
 
-            gp.obj[objIndex].speak();
+            gp.obj[objIndex].interact();
 
 //            Bed bed = new Bed();
 //            bed.speak();

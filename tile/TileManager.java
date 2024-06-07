@@ -14,6 +14,8 @@ public class TileManager {
     public GamePanel gp;
     public Tile[] tile;
     public int mapTileNum[][];
+    public int currentMap = 1;
+
 
 //    public GamePanel getGp() {
 //        return gp;
@@ -45,10 +47,12 @@ public class TileManager {
         tile = new Tile[1000]; // 10 kinds of tile
         mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         getTileImage();
-        loadMap("/BG/mapswall.txt");
+        loadMap("/maps/mapKamar.txt");
     }
     public void getTileImage(){
         try{
+
+            //Tile untuk map kamar
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/BG/floor01.png"));
 
@@ -79,6 +83,20 @@ public class TileManager {
             tile[7] = new Tile();
             BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/objectsPict/bed.png"));
             tile[7].collision = true;
+
+            //Tile untuk map Jalan raya
+
+            //...
+
+            //Tile untuk map Kelas
+
+            tile[8] = new Tile();
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/BG/classRoomFloor.png"));
+            tile[8].collision = false;
+
+            tile[9] = new Tile();
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/BG/classRoomWall.png"));
+            tile[9].collision = true;
 
 
 

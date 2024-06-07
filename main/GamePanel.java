@@ -1,12 +1,15 @@
 package main;
 
 import Entity.MainCharacter;
+import Entity.ManKind;
 import objects.OBJ_Bed;
 import objects.SuperObject;
 import tile.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 //game panel works like a game screen
 //to run thread must implement runnable interface
@@ -38,6 +41,8 @@ public class GamePanel extends JPanel implements Runnable{
     public  UI ui = new UI(this);
     public MainCharacter mainCharacter = new MainCharacter(this, keyH, "Budi",10, 500000, 10);
     public SuperObject obj[]=new SuperObject[10];
+    public ManKind[] npc = new ManKind[10];
+
 
 
     //game state
@@ -46,6 +51,15 @@ public class GamePanel extends JPanel implements Runnable{
     public final int pauseState = 2;
     public final int playState = 3;
     public final int infoState = 4;
+    public final int transitionState = 5; // State for transition
+
+    //font
+    Font pixelFont;
+
+    // Transition
+    private int transitionCounter = 0;
+    private final int transitionDuration = 60; // Duration of transition in frames (1 second)
+
 
 
     //constructor
@@ -55,11 +69,28 @@ public class GamePanel extends JPanel implements Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH); //recognize key input
         this.setFocusable(true);
+
+        //membuat font dari file
+        InputStream is = getClass().getResourceAsStream("/font/pixelFont.ttf");
+        if (is == null) {
+            throw new RuntimeException("Font file not found!");
+        }
+        try {
+            pixelFont = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+            throw new RuntimeException("Font format is incorrect", e);
+        } catch (IOException e) {
+            throw new RuntimeException("IOException occurred while reading the font file", e);
+        }
     }
 
-    public void setupGame(){
-        aSetter.setObject();
-//        gameState = sleep;
+    public void setUpGame() {
+        if (tileM.currentMap == 1) {
+            aSetter.setObject();
+            aSetter.setNPC();
+        } else {
+            // Set objects and NPCs for other maps
+        }
     }
 
     public void startGameThread(){
@@ -87,13 +118,51 @@ public class GamePanel extends JPanel implements Runnable{
 
         }
     }
-    public void update(){ //change palyer position
-        if(gameState == playState){
+    public void update() {
+        if (gameState == playState) {
             mainCharacter.update();
-        }else if (gameState == pauseState) {
+            checkMapTransition();
+        } else if (gameState == pauseState) {
+            // Handle pause state
+        } else if (gameState == transitionState) {
+            transitionCounter++;
+            if (transitionCounter >= transitionDuration) {
+                gameState = playState;
+                transitionCounter = 0;
+            }
+        }
+    }
+
+    //Fungsi untuk berpindah map
+    public void checkMapTransition() {
+        //ini kondisi untuk pindah dari kamar ke map Jalan raya
+        System.out.println("ini x: "+mainCharacter.x / tileSize+", ini y: "+mainCharacter.y / tileSize );
+        if (mainCharacter.x / tileSize >= 15 && mainCharacter.y / tileSize >= 10 && tileM.currentMap == 1) {
+            startTransition();
+            tileM.loadMap("/maps/mapKelas.txt");
+            tileM.currentMap = 2;
+
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
+
+            //set tempat spawn karakter pada map baru
+            mainCharacter.x = 5*tileSize; //ini berarti baris ke 5
+            mainCharacter.y = 5*tileSize; //ini berarti kolom ke 5
         }
 
+        //tambahin else if buat pindah dari map Jalan raya ke kamar lagi
+
+        //tambahin else if untuk map Jalan raya pindah ke restoran
+
+        //... and so on
     }
+
+    //set transisi
+    public void startTransition() {
+        gameState = transitionState;
+    }
+
     public void paintComponent(Graphics g){ //graphic class is a class that has many object
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; //convert g to g2 . Grpahics2d is a class that extend Graphics class
@@ -103,11 +172,41 @@ public class GamePanel extends JPanel implements Runnable{
                 obj[i].draw(g2,this);
             }
         }
+
+        //NPC
+        for (int i = 0; i < npc.length; i++) {
+            if (npc[i] != null) {
+                npc[i].draw(g2, this);
+            }
+        }
+
         mainCharacter.draw(g2);
         //ui
         ui.draw(g2);
 
+        if (gameState == transitionState) {
+            drawTransition(g2);
+        }
+
         g2.dispose();
 
+    }
+
+
+    //Fungsi untuk membuat gambar transisi
+    public void drawTransition(Graphics2D g2) {
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, screenWidth, screenHeight);
+
+        // Menetapkan ukuran font yang diinginkan, misalnya 24
+        Font sizedFont = pixelFont.deriveFont(24*3f); // 24 adalah ukuran font dalam satuan poin
+        g2.setFont(sizedFont);
+
+        g2.setColor(Color.WHITE);
+        String text = "Loading map...";
+        FontMetrics metrics = g2.getFontMetrics(g2.getFont());
+        int x = (screenWidth - metrics.stringWidth(text)) / 2;
+        int y = ((screenHeight - metrics.getHeight()) / 2) + metrics.getAscent();
+        g2.drawString(text, x, y);
     }
 }

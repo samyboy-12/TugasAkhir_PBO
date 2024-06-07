@@ -30,7 +30,7 @@ public class CollisionChecker {
                         manKind.collisionOn=true;
                     }
                 }catch (ArrayIndexOutOfBoundsException e){
-                    System.out.println(manKind.x == 724);
+//                    System.out.println(manKind.x == 724);
                     if(manKind.x == 724){
                         manKind.collisionOn=false;
                     }
@@ -60,7 +60,7 @@ public class CollisionChecker {
                                 manKind.collisionOn=true;
                             }
                         }catch (ArrayIndexOutOfBoundsException e){
-                            System.out.println(manKind.x == 724);
+//                            System.out.println(manKind.x == 724);
                             if(manKind.x == 724){
                                 manKind.collisionOn=false;
                             }
@@ -71,14 +71,14 @@ public class CollisionChecker {
                         case "right":
                             try{
                                 entityRightCol = (entityRightWorldX+manKind.speed)/gp.tileSize;
-                                System.out.println(entityRightCol);
+//                                System.out.println(entityRightCol);
                                 tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
                                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
                                 if(gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true){
                                     manKind.collisionOn=true;
                                 }
                             }catch (ArrayIndexOutOfBoundsException e){
-                                System.out.println(manKind.x == 724);
+//                                System.out.println(manKind.x == 724);
                                 if(manKind.x == 724){
                                     manKind.collisionOn=false;
                                 }
