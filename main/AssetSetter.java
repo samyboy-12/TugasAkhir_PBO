@@ -1,6 +1,8 @@
 package main;
 
+import objects.BlackBoard;
 import objects.OBJ_Bed;
+import objects.TablesInClassRoom;
 
 public class AssetSetter {
     GamePanel gp;
@@ -12,12 +14,27 @@ public class AssetSetter {
             gp.obj[i] = null;
         }
 
+        //ini map kamar
         if (gp.tileM.currentMap == 1) {
             gp.obj[0] = new OBJ_Bed(gp);
             gp.obj[0].worldX = (3 * gp.tileSize);
             gp.obj[0].worldY = 3 * gp.tileSize;
+
+            //ini map kelas
         } else if (gp.tileM.currentMap == 2) {
-//            gp.obj[0] = new BlackBoard(3 * gp.tileSize, 3 * gp.tileSize, gp);
+            gp.obj[0] = new TablesInClassRoom(3 * gp.tileSize, 3 * gp.tileSize, gp);
+            gp.obj[1] = new TablesInClassRoom(6 * gp.tileSize, 3 * gp.tileSize, gp);
+            gp.obj[2] = new TablesInClassRoom(9 * gp.tileSize, 3 * gp.tileSize, gp);
+            gp.obj[3] = new TablesInClassRoom(3 * gp.tileSize, 5 * gp.tileSize, gp);
+            gp.obj[4] = new TablesInClassRoom(6 * gp.tileSize, 5 * gp.tileSize, gp);
+            gp.obj[5] = new TablesInClassRoom(9 * gp.tileSize, 5 * gp.tileSize, gp);
+            gp.obj[6] = new TablesInClassRoom(3 * gp.tileSize, 7 * gp.tileSize, gp);
+            gp.obj[7] = new TablesInClassRoom(6 * gp.tileSize, 7 * gp.tileSize, gp);
+            gp.obj[8] = new TablesInClassRoom(9 * gp.tileSize, 7 * gp.tileSize, gp);
+            gp.obj[9] = new TablesInClassRoom(3 * gp.tileSize, 9 * gp.tileSize, gp);
+            gp.obj[10] = new TablesInClassRoom(6 * gp.tileSize, 9 * gp.tileSize, gp);
+            gp.obj[11] = new TablesInClassRoom(9 * gp.tileSize, 9 * gp.tileSize, gp);
+            gp.obj[13] = new BlackBoard(4 * gp.tileSize, 0 * gp.tileSize, gp);
         }
     }
 

@@ -2,7 +2,6 @@ package main;
 
 import Entity.MainCharacter;
 import Entity.ManKind;
-import objects.OBJ_Bed;
 import objects.SuperObject;
 import tile.TileManager;
 
@@ -40,18 +39,19 @@ public class GamePanel extends JPanel implements Runnable{
     public AssetSetter aSetter = new AssetSetter(this);
     public  UI ui = new UI(this);
     public MainCharacter mainCharacter = new MainCharacter(this, keyH, "Budi",10, 500000, 10);
-    public SuperObject obj[]=new SuperObject[10];
+    public SuperObject obj[]=new SuperObject[100];
     public ManKind[] npc = new ManKind[10];
 
 
 
     //game state
     public int gameState;
-    public final int sleep = 1;
+    public final int sleepState = 1;
     public final int pauseState = 2;
     public final int playState = 3;
     public final int infoState = 4;
-    public final int transitionState = 5; // State for transition
+    public final int dialogueState = 5;
+    public final int transitionState = 6; // State for transition
 
     //font
     Font pixelFont;
@@ -141,6 +141,18 @@ public class GamePanel extends JPanel implements Runnable{
             startTransition();
             tileM.loadMap("/maps/mapKelas.txt");
             tileM.currentMap = 2;
+
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
+
+            //set tempat spawn karakter pada map baru
+            mainCharacter.x = 5*tileSize; //ini berarti baris ke 5
+            mainCharacter.y = 5*tileSize; //ini berarti kolom ke 5
+        } else if (mainCharacter.x / tileSize >= 12 && mainCharacter.y / tileSize < 1 && tileM.currentMap == 2) {
+            startTransition();
+            tileM.loadMap("/maps/mapKamar.txt");
+            tileM.currentMap = 1;
 
             //load npc dan karakter pada map baru
             aSetter.setObject();

@@ -153,4 +153,55 @@ public class CollisionChecker {
         }
         return index;
     }
+
+    public int checkEntity(ManKind mankind, ManKind[] target){
+        int index = 999;
+
+        for (int i = 0; i < target.length; i++){
+
+            if(target[i] != null){
+                mankind.solidArea.x = mankind.x+mankind.solidArea.x;
+                mankind.solidArea.y = mankind.y+mankind.solidArea.y;
+
+                target[i].solidArea.x = target[i].x+target[i].solidArea.x;
+                target[i].solidArea.y = target[i].y+target[i].solidArea.y;
+
+                switch (mankind.direction){
+                    case "up":
+                        mankind.solidArea.y -= mankind.speed;
+                        if (mankind.solidArea.intersects(target[i].solidArea)){
+                            mankind.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                    case "down":
+                        mankind.solidArea.y += mankind.speed;
+                        if (mankind.solidArea.intersects(target[i].solidArea)){
+                            mankind.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                    case "left":
+                        mankind.solidArea.x -= mankind.speed;
+                        if (mankind.solidArea.intersects(target[i].solidArea)){
+                            mankind.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                    case "right":
+                        mankind.solidArea.x += mankind.speed;
+                        if (mankind.solidArea.intersects(target[i].solidArea)){
+                            mankind.collisionOn = true;
+                            index = i;
+                        }
+                        break;
+                }
+                mankind.solidArea.x = mankind.solidAreaDefaultX;
+                mankind.solidArea.y = mankind.solidAreaDefaultY;
+                target[i].solidArea.x = target[i].solidAreaDefaultX;
+                target[i].solidArea.y = target[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+    }
 }

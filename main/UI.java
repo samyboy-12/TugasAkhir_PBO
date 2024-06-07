@@ -48,17 +48,28 @@
 package main;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class UI {
     GamePanel gp;
     Graphics2D g2;
-    Font arial_40, arial_80B;
+    Font pixelFont;
     public String currentDialogue = "";
 
     public  UI(GamePanel gp){
         this.gp = gp;
-        arial_40 = new Font("Arial", Font.PLAIN,40);
-        arial_80B = new Font("Arial", Font.BOLD,80);
+        InputStream is = getClass().getResourceAsStream("/font/pixelFont.ttf");
+        if (is == null) {
+            throw new RuntimeException("Font file not found!");
+        }
+        try {
+            pixelFont = Font.createFont(Font.TRUETYPE_FONT, is);
+        } catch (FontFormatException e) {
+            throw new RuntimeException("Font format is incorrect", e);
+        } catch (IOException e) {
+            throw new RuntimeException("IOException occurred while reading the font file", e);
+        }
 
     }
 
@@ -66,21 +77,21 @@ public class UI {
     }
 
     public  void draw(Graphics2D g2){
-//        System.out.println("draw");
         this.g2 = g2;
-        g2.setFont(arial_40);
+        g2.setFont(pixelFont);
         g2.setColor(Color.WHITE);
-//        System.out.println(gp.gameState);
-         if (gp.gameState == gp.sleep) {
-//             System.out.println("print");
-            drawDialogueScreen();
-        }if(gp.gameState == gp.playState){
 
+         if ( gp.gameState == gp.playState) {
+
+        }else if(gp.gameState == gp.sleepState){
+             drawDialogueScreen();
         } else if (gp.gameState == gp.pauseState) {
             drawPauseScreen();
         } else if (gp.gameState == gp.infoState) {
 
-        }
+         }else if (gp.gameState == gp.dialogueState) {
+             drawDialogueScreen();
+         }
     }
 
     public void drawDialogueScreen(){
@@ -89,14 +100,19 @@ public class UI {
         int x = gp.tileSize*2;
         int y = 0;
         int width = gp.screenWidth-(gp.tileSize*4);
-        int height = gp.tileSize*2;
+        int height = gp.tileSize*3;
 
         drawSubWindow(x,y,width,height);
 
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,20));
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,24));
         x+=gp.tileSize-20;
         y+=gp.tileSize;
-        g2.drawString(currentDialogue,x,y);
+
+        //ini biar bisa teks nya di new line (pake /n)
+        for (String line: currentDialogue.split("/n")){
+            g2.drawString(line,x,y);
+            y += 20;
+        }
     }
 
     public void drawSubWindow(int x, int y, int width, int height){

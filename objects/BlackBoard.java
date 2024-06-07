@@ -11,7 +11,7 @@ public class BlackBoard extends SuperObject {
         super(gp);
         name = "BlackBoard";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/assets/object/blackBoardInClassRoom.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objects/blackBoardInClassRoom.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -32,6 +32,6 @@ public class BlackBoard extends SuperObject {
     }
 
     public void setinteractText(){
-        this.interactText[0] = "                   Materi Pembelajaran /n         Object Oriented Programming (OOP) Java. /n/n-Tekan huruf 'i' kembali untuk berhenti membaca papan tulis-";
+        this.interactText[0] = "                   Materi Pembelajaran /n         Object Oriented Programming (OOP) Java. /n/n-Tekan huruf 'T' kembali untuk berhenti membaca papan tulis-";
     }
 }

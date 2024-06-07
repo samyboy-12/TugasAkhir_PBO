@@ -89,14 +89,21 @@ public class TileManager {
             //...
 
             //Tile untuk map Kelas
-
             tile[8] = new Tile();
-            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/BG/classRoomFloor.png"));
+            tile[8].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapKelas/classRoomFloor.png"));
             tile[8].collision = false;
 
             tile[9] = new Tile();
-            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/BG/classRoomWall.png"));
+            tile[9].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapKelas/classRoomWall.png"));
             tile[9].collision = true;
+
+            tile[10] = new Tile();
+            tile[10].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapKelas/clockInClassRoom.png"));
+            tile[10].collision = true;
+
+            tile[11] = new Tile();
+            tile[11].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapKelas/notesInClassRoom.png"));
+            tile[11].collision = true;
 
 
 

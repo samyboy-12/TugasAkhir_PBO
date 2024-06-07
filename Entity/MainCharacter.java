@@ -14,7 +14,10 @@ public class MainCharacter extends ManKind implements iMovable {
     KeyHandler keyH;
     private int money;
     private int energyBar;
-
+    public boolean sudahMengeluh = false;
+    private boolean eligibleToStudy = true;
+    public String[] dialoguesMengeluh = new String[5];
+    public int dialoguesMengeluhIndex;
     public int getMoney() {
         return money;
     }
@@ -29,6 +32,13 @@ public class MainCharacter extends ManKind implements iMovable {
 
     public void setEnergyBar(int energyBar) {
         this.energyBar = energyBar;
+    }
+    public boolean isEligibleToStudy() {
+        return eligibleToStudy;
+    }
+
+    public void setEligibleToStudy(boolean eligibleToStudy) {
+        this.eligibleToStudy = eligibleToStudy;
     }
 
     public MainCharacter(GamePanel gp, KeyHandler keyH, String name, int age, int money, int energyBar) {
@@ -46,6 +56,8 @@ public class MainCharacter extends ManKind implements iMovable {
         setDefaultValues();
         getPlayerImage();
         setDialogue();
+        this.setMengeluh();
+        this.energyBar = 100;
     }
     public void setDefaultValues(){
         x = 100;
@@ -92,8 +104,6 @@ public class MainCharacter extends ManKind implements iMovable {
 
             int objIndex = gp.cChecker.checkObject(this,true);
 
-
-
 //            check if collison false, can go
             if(collisionOn == false){
                 switch (direction){
@@ -132,7 +142,7 @@ public class MainCharacter extends ManKind implements iMovable {
         if(objIndex != 999){
 //            gp.obj[i] = null;
 //            System.out.println(gp.obj[objIndex]);
-            gp.gameState = gp.sleep;
+            gp.gameState = gp.sleepState;
             System.out.println(gp.gameState + "ini");
 
             gp.obj[objIndex].interact();
@@ -142,6 +152,57 @@ public class MainCharacter extends ManKind implements iMovable {
 //            System.out.println("hi");
         }
     }
+
+    public void interactObject(){
+        int objIndex = gp.cChecker.checkObject(this,true);
+        if (objIndex != 999 && gp.obj[objIndex].name != "Table"){
+            gp.obj[objIndex].interact();
+            gp.gameState = gp.dialogueState;
+        }
+    }
+
+    @Override
+    public void communicate() {
+        int npcIndex = gp.cChecker.checkEntity(this,gp.npc);
+        if (npcIndex != 999){
+            gp.npc[npcIndex].communicate();
+            gp.gameState = gp.dialogueState;
+        }
+    }
+
+    public void study() {
+        if (this.energyBar-10>0){
+            this.energyBar-=10;
+            int objIndex = gp.cChecker.checkObject(this,true);
+            if (objIndex != 999){
+                gp.obj[objIndex].interact();
+                gp.gameState = gp.dialogueState;
+            }
+        }else{
+            gp.ui.currentDialogue ="   Saat ini anda tidak bisa belajar karena anda kecapean. /n/n      Istirahatlah sebentar dengan membeli makan!";
+            gp.gameState = gp.dialogueState;
+            this.eligibleToStudy = false;
+        }
+    }
+
+    public void mengeluh(){
+        this.sudahMengeluh = true;
+        if (dialoguesMengeluhIndex >= dialoguesMengeluh.length || dialoguesMengeluh[dialoguesMengeluhIndex] == null) {
+            dialoguesMengeluhIndex = 0; // Reset ke awal jika null atau melewati batas
+        }
+
+// Set dialog saat ini dan increment index
+        if (dialoguesMengeluh[dialoguesMengeluhIndex] != null) {
+            gp.ui.currentDialogue = dialoguesMengeluh[dialoguesMengeluhIndex];
+        }
+    }
+
+    public void setMengeluh(){
+        dialoguesMengeluh[0] = "Pemain: /nKayaknya aku butuh me time dulu deh habis belajar ini /n/n---Tekan huruf 'B' kembali untuk berhenti mengeluh---";
+        dialoguesMengeluh[1] = "Pemain: /nHaduhhh, cape banget belajar. Padahal baru 2 SKS. /n/n---Tekan huruf 'B' kembali untuk berhenti mengeluh---";
+        dialoguesMengeluh[2] = "Pemain: /nCape banget belajar, pengen ternak lele aja. /n/n---Tekan huruf 'B' kembali untuk berhenti mengeluh---";
+    }
+
     public String[] dialogues = new String[20];
     public int dialogueIndex;
 

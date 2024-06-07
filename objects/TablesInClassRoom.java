@@ -5,6 +5,7 @@ import Entity.ManKind;
 import main.GamePanel;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.IOException;
 
 public class TablesInClassRoom extends SuperObject {
@@ -13,7 +14,7 @@ public class TablesInClassRoom extends SuperObject {
         super(gp);
         this.name = "Table";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/assets/object/tableInClassRoom.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objects/tableInClassRoom.png"));
         }catch(IOException e){
             e.printStackTrace();
         }
@@ -22,6 +23,7 @@ public class TablesInClassRoom extends SuperObject {
         this.worldY = worldY;
         this.collision = true;
         this.setinteractText();
+        this.solidArea.width *= 2;
     }
 
     public void interact(){
@@ -38,5 +40,9 @@ public class TablesInClassRoom extends SuperObject {
 
     public void setinteractText(){
         this.interactText[0] = "/n                SAAT INI PEMAIN SEDANG BELAJAR. /n/n    ----Tekan huruf 'B' kembali untuk berhenti belajar---";
+    }
+
+    public void draw(Graphics2D g2, GamePanel gp){
+        g2.drawImage(image, worldX, worldY, gp.tileSize*2, gp.tileSize, null);
     }
 }
