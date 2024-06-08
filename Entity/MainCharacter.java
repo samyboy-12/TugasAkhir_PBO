@@ -171,17 +171,17 @@ public class MainCharacter extends ManKind implements iMovable {
     }
 
     public void study() {
-        if (this.energyBar-33>=0){
+        int objIndex = gp.cChecker.checkObject(this,true);
+        if (this.energyBar-33>=0 && objIndex != 999){
             this.energyBar-=33;
-            int objIndex = gp.cChecker.checkObject(this,true);
-            if (objIndex != 999){
-                gp.obj[objIndex].interact();
-                gp.gameState = gp.studyState;
-            }
+            gp.obj[objIndex].interact();
+            gp.gameState = gp.studyState;
         }else{
-            gp.ui.currentDialogue ="   Saat ini anda tidak bisa belajar karena anda kecapean. /n/n      Istirahatlah sebentar dengan membeli makan!";
-            gp.gameState = gp.dialogueState;
-            this.eligibleToStudy = false;
+            if(objIndex != 999){
+                gp.ui.currentDialogue ="   Saat ini anda tidak bisa belajar karena anda kecapean. /n/n      Istirahatlah sebentar dengan membeli makan!";
+                gp.gameState = gp.dialogueState;
+                this.eligibleToStudy = false;
+            }
         }
     }
 
