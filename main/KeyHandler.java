@@ -47,6 +47,7 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_J) {
                     gp.mainCharacter.interactObject();
                 }
+
             } else if (gp.gameState == gp.pauseState) {
                 if (code == KeyEvent.VK_P) {
                     gp.gameState = gp.playState;
@@ -54,6 +55,9 @@ public class KeyHandler implements KeyListener {
             } else if (gp.gameState == gp.sleepState) {
                 if (code == KeyEvent.VK_S) {
                     gp.gameState = gp.playState;
+                }
+                if (code == KeyEvent.VK_F) {
+                    gp.mainCharacter.finish();
                 }
             } else if (gp.gameState == gp.dialogueState) {
                 if (code == KeyEvent.VK_B) {

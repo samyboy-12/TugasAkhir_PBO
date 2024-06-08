@@ -170,6 +170,10 @@ public class MainCharacter extends ManKind implements iMovable {
         }
     }
 
+    public void finish(){
+        gp.ui.gameFinished = true;
+    }
+
     public void study() {
         int objIndex = gp.cChecker.checkObject(this,true);
         if (this.energyBar-33>=0 && objIndex != 999){
