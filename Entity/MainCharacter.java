@@ -3,6 +3,7 @@ package Entity;
 import interfaces.iMovable;
 import main.GamePanel;
 import main.KeyHandler;
+import objects.SuperObject;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -12,19 +13,27 @@ import java.io.IOException;
 public class MainCharacter extends ManKind implements iMovable {
 
     KeyHandler keyH;
-    private int money;
+    private int cash;
+    private int moneyInATM;
     private int energyBar;
     public boolean sudahMengeluh = false;
     private boolean eligibleToStudy = true;
     public String[] dialoguesMengeluh = new String[5];
     public int dialoguesMengeluhIndex;
 
-    public int getMoney() {
-        return money;
+    public int getMoneyInATM() {
+        return moneyInATM;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setMoneyInATM(int moneyInATM) {
+        this.moneyInATM = moneyInATM;
+    }
+    public int getCash() {
+        return cash;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
     }
 
     public int getEnergyBar() {
@@ -45,7 +54,7 @@ public class MainCharacter extends ManKind implements iMovable {
 
     public MainCharacter(GamePanel gp, KeyHandler keyH, String name, int age, int money, int energyBar) {
         super(name, age, gp);
-        this.money = money;
+        this.cash = money;
         this.energyBar = energyBar;
         this.keyH = keyH;
         solidArea = new Rectangle();
@@ -60,6 +69,7 @@ public class MainCharacter extends ManKind implements iMovable {
         setDialogue();
         this.setMengeluh();
         this.energyBar = 100;
+        this.moneyInATM = 10000000;
     }
 
     public void setDefaultValues() {
@@ -97,6 +107,7 @@ public class MainCharacter extends ManKind implements iMovable {
             }
             collisionOn = false;
             gp.cChecker.checkTile(this);
+            gp.cChecker.checkEntity(this, gp.npc);
 
             int objIndex = gp.cChecker.checkObject(this, true);
 
@@ -142,6 +153,20 @@ public class MainCharacter extends ManKind implements iMovable {
             gp.obj[objIndex].interact();
             gp.gameState = gp.dialogueState;
         }
+    }
+
+
+    //Overloading method transaction
+    public void transaction(SuperObject atm){
+        atm.interact();
+        gp.gameState = gp.dialogueState;
+
+    }
+
+    public void transaction(ManKind penjual){
+        penjual.communicate();
+        gp.gameState = gp.dialogueState;
+
     }
 
     @Override
@@ -194,6 +219,15 @@ public class MainCharacter extends ManKind implements iMovable {
     public int dialogueIndex;
 
     public void displayInfo() {
+        int npcIndex = gp.cChecker.checkEntity(this, gp.npc);
+        if (npcIndex != 999) {
+            gp.npc[npcIndex].displayInfo();
+            gp.gameState = gp.dialogueState;
+        } else if (npcIndex == 999) {
+            this.setInfoMC("-----------------------INFO KARAKTER-----------------------/nNama : "+this.getName()+"/nUmur : "+this.getAge()+"/nUang Tunai : "+this.getCash()+"/nUang di ATM : "+this.getMoneyInATM()+" /nEnergi : "+this.getEnergyBar());
+            gp.ui.currentDialogue = this.getInfoMC();
+            gp.gameState = gp.dialogueState;
+        }
     }
 
     public void setDialogue() {

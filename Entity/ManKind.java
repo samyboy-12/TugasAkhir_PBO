@@ -20,14 +20,22 @@ public abstract class ManKind {
     public GamePanel gp;
     public String[] dialogues = new String[20];
     public int dialogueIndex;
+    private String infoMC;
 
+    public String getInfoMC() {
+        return infoMC;
+    }
 
-    public int getMoney() {
+    public void setInfoMC(String infoMC) {
+        this.infoMC = infoMC;
+    }
+
+    public int getCash() {
         return money;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setCash(int cash) {
+        this.money = cash;
     }
 
     public int getAge() {

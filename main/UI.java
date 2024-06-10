@@ -95,7 +95,7 @@ public class UI {
         int x = gp.tileSize * 2;
         int y = 0;
         int width = gp.screenWidth - (gp.tileSize * 4);
-        int height = gp.tileSize * 3;
+        int height = gp.tileSize * 4;
 
         drawSubWindow(x, y, width, height);
 

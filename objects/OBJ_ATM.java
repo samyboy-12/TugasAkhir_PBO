@@ -20,41 +20,28 @@ public class OBJ_ATM extends SuperObject {
             e.printStackTrace();
         }
         collision = true;
-        setDialogue();
         this.gp = gp;
-    }
+        this.withdrawalAmount = 50000;
 
-    public void setDialogue() {
-        interactText[0] = "Berikut uang kamu!";
-        interactText[1] = "ingin ambil berapa";
     }
 
     public void interact() {
-        if (interactText[interactDialogueIndex] == null) {
-            interactDialogueIndex = 0;
-        } else {
-            gp.ui.currentDialogue = interactText[interactDialogueIndex];
-            interactDialogueIndex++;
+        MainCharacter mainCharacter = gp.maincharacter;
+        if (interactDialogueIndex == 0) {
+            gp.ui.currentDialogue = "-----------------------ATM BIR-----------------------/nSALDO ANDA: "+mainCharacter.getMoneyInATM()+"/n/nAPAKAH KAMU YAKIN AKAN MENGAMBIL UANG Rp.50.000 ?/n(TEKAN HURUF 'T' KEMBALI)";
+            interactDialogueIndex = 1;
         }
-
-        if (interactDialogueIndex == 2) {
-            // Logic to set withdrawalAmount, could be from user input
-            withdrawalAmount = 5000; // Example fixed withdrawal amount
-            MainCharacter mainCharacter = gp.mainCharacter; // Assuming gp.player is the main character
-            if (mainCharacter.getMoney() >= withdrawalAmount) {
-                mainCharacter.setMoney(mainCharacter.getMoney() - withdrawalAmount);
-                gp.ui.currentDialogue = "You have withdrawn " + withdrawalAmount + " money.";
+        else if (interactDialogueIndex == 1){
+            if (mainCharacter.getMoneyInATM() >= withdrawalAmount) {
+                mainCharacter.setCash(mainCharacter.getCash() + withdrawalAmount);
+                mainCharacter.setMoneyInATM(mainCharacter.getMoneyInATM()-withdrawalAmount);
+                gp.ui.currentDialogue = "/n/n       ANDA TELAH MENARIK UANG TUNAI SEBESAR : Rp. " + withdrawalAmount;
             } else {
-                gp.ui.currentDialogue = "You don't have enough money.";
+                gp.ui.currentDialogue = "/n/n           UANG DI ATM ANDA TIDAK CUKUP!";
             }
-            interactDialogueIndex = 0; // Reset the dialogue index
+            interactDialogueIndex = 0;
+            System.out.println(interactDialogueIndex);
         }
-    }
-
-    @Override
-    public void setinteractText() {
-        interactText[0] = "Berikut uang kamu";
-        interactText[1] = "ingin ambil berapa";
     }
 
     public void draw(Graphics2D g2, GamePanel gp) {

@@ -15,7 +15,7 @@ public abstract class SuperObject {
     public int solidAreaDefaultX = 0;
     public int solidAreaDefaultY = 0;
     public String[] interactText = new String[20];
-    public int interactDialogueIndex;
+    public int interactDialogueIndex = 0;
 
     public SuperObject(GamePanel gp){
         this.gp = gp;

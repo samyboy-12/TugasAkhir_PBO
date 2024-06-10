@@ -33,19 +33,33 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.pauseState;
                 }
                 if (code == KeyEvent.VK_S) {
-                    gp.mainCharacter.sleep();
+                    gp.maincharacter.sleep();
                 }
                 if (code == KeyEvent.VK_I) {
-                    gp.mainCharacter.displayInfo();
+                    gp.maincharacter.displayInfo();
                 }
                 if (code == KeyEvent.VK_B) {
-                    gp.mainCharacter.study();
+                    gp.maincharacter.study();
                 }
                 if (code == KeyEvent.VK_C) {
-                    gp.mainCharacter.communicate();
+                    gp.maincharacter.communicate();
                 }
                 if (code == KeyEvent.VK_J) {
-                    gp.mainCharacter.interactObject();
+                    gp.maincharacter.interactObject();
+                }
+                if (code == KeyEvent.VK_I) {
+                    gp.maincharacter.displayInfo();
+                }
+                if (code == KeyEvent.VK_T) {
+                    int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
+                    int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
+                    if (objIndex != 999){
+                        gp.maincharacter.transaction(gp.obj[objIndex]);
+                    }else if (npcIndex != 999) {
+                        gp.maincharacter.transaction(gp.npc[npcIndex]);
+                    }else{
+
+                    }
                 }
 
             } else if (gp.gameState == gp.pauseState) {
@@ -57,21 +71,30 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if (code == KeyEvent.VK_F) {
-                    gp.mainCharacter.finish();
+                    gp.maincharacter.finish();
                 }
             } else if (gp.gameState == gp.dialogueState) {
                 if (code == KeyEvent.VK_B) {
-                    if (gp.mainCharacter.sudahMengeluh){
+                    if (gp.maincharacter.sudahMengeluh){
                         gp.gameState = gp.playState;
-                        gp.mainCharacter.sudahMengeluh = false;
-                    }else if(gp.mainCharacter.isEligibleToStudy()){
-                        gp.mainCharacter.dialogueIndex++;
-                        gp.mainCharacter.mengeluh();
+                        gp.maincharacter.sudahMengeluh = false;
+                    }else if(gp.maincharacter.isEligibleToStudy()){
+                        gp.maincharacter.dialogueIndex++;
+                        gp.maincharacter.mengeluh();
                     }else{
                         gp.gameState = gp.playState;
                     }
                 }
                 if (code == KeyEvent.VK_J) {
+                    gp.gameState = gp.playState;
+                }
+                if (code == KeyEvent.VK_C) {
+                    gp.gameState = gp.playState;
+                }
+                if (code == KeyEvent.VK_I) {
+                    gp.gameState = gp.playState;
+                }
+                if (code == KeyEvent.VK_T) {
                     gp.gameState = gp.playState;
                 }
             }
