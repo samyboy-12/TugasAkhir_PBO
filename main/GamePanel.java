@@ -156,8 +156,8 @@ public class GamePanel extends JPanel implements Runnable{
         System.out.println("ini x: "+mainCharacter.x / tileSize+", ini y: "+mainCharacter.y / tileSize );
         if (mainCharacter.x / tileSize >= 15 && mainCharacter.y / tileSize >= 10 && tileM.currentMap == 1) {
             startTransition();
-            tileM.loadMap("/maps/mapKelas.txt");
-            tileM.currentMap = 2;
+            tileM.loadMap("/maps/mapJalan.txt");
+            tileM.currentMap = 3;
 
             //load npc dan karakter pada map baru
             aSetter.setObject();
@@ -168,8 +168,8 @@ public class GamePanel extends JPanel implements Runnable{
             mainCharacter.y = 5*tileSize; //ini berarti kolom ke 5
         } else if (mainCharacter.x / tileSize >= 12 && mainCharacter.y / tileSize < 1 && tileM.currentMap == 2) {
             startTransition();
-            tileM.loadMap("/maps/mapKamar.txt");
-            tileM.currentMap = 1;
+            tileM.loadMap("/maps/mapJalan.txt");
+            tileM.currentMap = 3;
 
             //load npc dan karakter pada map baru
             aSetter.setObject();
@@ -181,10 +181,32 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
         //tambahin else if buat pindah dari map Jalan raya ke kamar lagi
+        else if (mainCharacter.x / tileSize <= 0 && mainCharacter.y / tileSize <=4 && tileM.currentMap == 3) {
+            startTransition();
+            tileM.loadMap("/maps/mapKamar.txt");
+            tileM.currentMap = 1;
 
-        //tambahin else if untuk map Jalan raya pindah ke restoran
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
 
-        //... and so on
+            //set tempat spawn karakter pada map baru
+            mainCharacter.x = 5 * tileSize; //ini berarti baris ke 5
+            mainCharacter.y = 5 * tileSize; //ini berarti kolom ke 5
+        }
+        else if (mainCharacter.x / tileSize >= 15 && mainCharacter.y / tileSize >= 4 && tileM.currentMap == 3) {
+            startTransition();
+            tileM.loadMap("/maps/mapKelas.txt");
+            tileM.currentMap = 2;
+
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
+
+            //set tempat spawn karakter pada map baru
+            mainCharacter.x = 5 * tileSize; //ini berarti baris ke 5
+            mainCharacter.y = 5 * tileSize; //ini berarti kolom ke 5
+        }
     }
 
     //set transisi

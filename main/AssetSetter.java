@@ -3,6 +3,7 @@ package main;
 import objects.BlackBoard;
 import objects.OBJ_Bed;
 import objects.TablesInClassRoom;
+import objects.OBJ_ATM;
 
 public class AssetSetter {
     GamePanel gp;
@@ -36,6 +37,12 @@ public class AssetSetter {
             gp.obj[11] = new TablesInClassRoom(9 * gp.tileSize, 9 * gp.tileSize, gp);
             gp.obj[13] = new BlackBoard(4 * gp.tileSize, 0 * gp.tileSize, gp);
         }
+        else if (gp.tileM.currentMap == 3) {
+            gp.obj[0] = new OBJ_ATM(gp);
+            gp.obj[0].worldX = (9 * gp.tileSize);
+            gp.obj[0].worldY = 4 * gp.tileSize;
+        }
+
     }
 
     public void setNPC(){
