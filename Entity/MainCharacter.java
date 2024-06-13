@@ -160,7 +160,6 @@ public class MainCharacter extends ManKind implements iMovable {
     public void transaction(SuperObject atm){
         atm.interact();
         gp.gameState = gp.dialogueState;
-
     }
 
     public void transaction(ManKind penjual){

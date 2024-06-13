@@ -14,6 +14,13 @@ public class UI {
     Font arial_40B, arial_80B;
     private String playerInput;
     public boolean awaitingInput = false;
+    public int commandNum = 0;
+    public boolean inPauseScreen;
+
+    //untuk sub window
+    public int titleScreenState = 0;
+
+
 
     public UI(GamePanel gp) {
         this.gp = gp;
@@ -87,6 +94,128 @@ public class UI {
 
             } else if (gp.gameState == gp.dialogueState) {
                 drawDialogueScreen();
+            }else if (gp.gameState == gp.titleState) {
+                drawTitleScreen();
+            }
+        }
+    }
+
+    public void drawTitleScreen(){
+
+        if (titleScreenState == 0){
+            
+            //TITLE NAME
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 56));
+            String text = "     KOSLIFE: SIMULASI ANAK KOS";
+            int x = getXforCenteredText(text)-45;
+            int y = gp.tileSize*2;
+    
+            //SHADOW
+            g2.setColor(Color.GRAY);
+            g2.drawString(text,x+4,y+4);
+    
+            //MAIN COLOR
+            g2.setColor(Color.WHITE);
+            g2.drawString(text,x,y);
+    
+            //MAIN CHARACTER IMAGE
+            x = gp.screenWidth/2 - (gp.tileSize*2)/2;
+            y += gp.tileSize*2;
+            g2.drawImage(gp.maincharacter.down1, x, y, gp.tileSize*2, gp.tileSize*2, null);
+    
+            //MENU
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 46));
+            text = "START SIMULATION";
+            x = getXforCenteredText(text);
+            y += gp.tileSize*4;
+            g2.drawString(text, x, y);
+            if (commandNum == 0){
+                g2.drawString("->", x-gp.tileSize,y);
+            }
+    
+            text = "STORY OF THE GAME";
+            x = getXforCenteredText(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 1){
+                g2.drawString("->", x-gp.tileSize,y);
+            }
+    
+            text = "HOW TO PLAY (CONTROL GUIDE)";
+            x = getXforCenteredText(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 2){
+                g2.drawString("->", x-gp.tileSize,y);
+            }
+    
+            text = "QUIT";
+            x = getXforCenteredText(text);
+            y += gp.tileSize;
+            g2.drawString(text, x, y);
+            if (commandNum == 3){
+                g2.drawString("->", x-gp.tileSize,y);
+            }
+        } else if (titleScreenState == 1) {
+            commandNum = 0;
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 46));
+            String text = "        STORY OF 'KOSLIFE: SIMULASI ANAK KOS'";
+            int x = getXforCenteredText(text)-45;
+            int y = gp.tileSize*2;
+
+            //SHADOW
+            g2.setColor(Color.GRAY);
+            g2.drawString(text,x+4,y+4);
+
+            //MAIN COLOR
+            g2.setColor(Color.WHITE);
+            g2.drawString(text,x,y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32));
+            text = "'KOS LIFE: GAME SIMULASI ANAK KOS' /n merupakan Lorem ipsum dolor sit amet, consectetur adipiscing elit, /n sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. /nUt enim ad minim veniam, quis nostrud exercitation ullamco";
+            String[] lines = text.split("/n");
+            y += gp.tileSize * 2; // Positioning the start of the instructions
+            for (String line : lines) {
+                x = getXforCenteredText(line);
+                g2.drawString(line, x, y);
+                y += gp.tileSize; // Move y position for next line
+            }
+
+            text = "QUIT TO MAIN MENU";
+            x = getXforCenteredText(text);
+            y = gp.tileSize*10;
+            g2.drawString(text, x, y);
+            if (commandNum == 0){
+                g2.drawString("->", x-gp.tileSize,y);
+            }
+        } else if (titleScreenState == 2) {
+            commandNum = 0;
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 46));
+            String text = "    CONTORL GUIDE FOR 'KOSLIFE: SIMULASI ANAK KOS'";
+            int x = getXforCenteredText(text)-45;
+            int y = gp.tileSize*2;
+            //SHADOW
+            g2.setColor(Color.GRAY);
+            g2.drawString(text,x+4,y+4);
+            //MAIN COLOR
+            g2.setColor(Color.WHITE);
+            g2.drawString(text,x,y);
+
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
+            text = "PRESS '^' TO MOVE UP  /n PRESS '>' TO MOVE RIGHT /n PRESS '<' TO MOVE LEFT /n";
+            String[] lines = text.split("/n");
+            y += gp.tileSize * 2; // Positioning the start of the instructions
+            for (String line : lines) {
+                x = getXforCenteredText(line);
+                g2.drawString(line, x, y);
+                y += gp.tileSize; // Move y position for next line
+            }
+            text = "QUIT TO MAIN MENU";
+            x = getXforCenteredText(text);
+            y += gp.tileSize*3;
+            g2.drawString(text, x, y);
+            if (commandNum == 0){
+                g2.drawString("->", x-gp.tileSize,y);
             }
         }
     }
@@ -121,11 +250,46 @@ public class UI {
     }
 
     public void drawPauseScreen() {
-        g2.setFont(g2.getFont().deriveFont(Font.PLAIN, 80));
-        String text = "PAUSED";
-        int x = getXforCenteredText(text);
-        int y = gp.screenHeight / 2;
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 66));
+        String text = "      --GAME PAUSED--";
+        int x = getXforCenteredText(text)-45;
+        int y = gp.tileSize*2;
+
+        //SHADOW
+        g2.setColor(Color.GRAY);
+        g2.drawString(text,x+4,y+4);
+
+        //MAIN COLOR
+        g2.setColor(Color.WHITE);
+        g2.drawString(text,x,y);
+
+        //MENU
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 42));
+        text = "RESUME";
+        x = getXforCenteredText(text);
+        y += gp.tileSize*4;
         g2.drawString(text, x, y);
+        if (commandNum == 0){
+            g2.drawString("->", x-gp.tileSize,y);
+        }
+
+        text = "HOW TO PLAY (CONTROL GUIDE)";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+        if (commandNum == 1){
+            g2.drawString("->", x-gp.tileSize,y);
+        }
+
+        text = "QUIT TO MAIN MENU";
+        x = getXforCenteredText(text);
+        y += gp.tileSize;
+        g2.drawString(text, x, y);
+        if (commandNum == 2){
+            g2.drawString("->", x-gp.tileSize,y);
+        }
     }
 
     public int getXforCenteredText(String text) {

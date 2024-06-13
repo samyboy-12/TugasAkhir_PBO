@@ -46,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable{
 
     //game state
     public int gameState;
+    public final int titleState = 0;
     public final int sleepState = 1;
     public final int pauseState = 2;
     public final int playState = 3;
@@ -98,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void startGameThread(){
         gameThread = new Thread(this);//passing game pannel class to this constructor . to initiate the thread
         gameThread.start(); //call the run method
-        gameState = playState;
+        gameState = titleState;
     }
     @Override
     public void run() { //make a loop
@@ -221,23 +222,31 @@ public class GamePanel extends JPanel implements Runnable{
     public void paintComponent(Graphics g){ //graphic class is a class that has many object
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; //convert g to g2 . Grpahics2d is a class that extend Graphics class
-        tileM.draw(g2);
-        for(int i = 0; i<obj.length; i++){
-            if(obj[i]!=null){
-                obj[i].draw(g2,this);
-            }
-        }
 
-        //NPC
-        for (int i = 0; i < npc.length; i++) {
-            if (npc[i] != null) {
-                npc[i].draw(g2, this);
-            }
+        //TITLE SCREEN
+        if (gameState == titleState){
+            ui.draw(g2);
         }
+        //OTHERS
+        else{
+            tileM.draw(g2);
+            for(int i = 0; i<obj.length; i++){
+                if(obj[i]!=null){
+                    obj[i].draw(g2,this);
+                }
+            }
 
-        maincharacter.draw(g2);
-        //ui
-        ui.draw(g2);
+            //NPC
+            for (int i = 0; i < npc.length; i++) {
+                if (npc[i] != null) {
+                    npc[i].draw(g2, this);
+                }
+            }
+
+            maincharacter.draw(g2);
+            //ui
+            ui.draw(g2);
+        }
 
         if (gameState == transitionState) {
             drawTransition(g2, false);
