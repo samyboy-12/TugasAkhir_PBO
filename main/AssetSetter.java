@@ -2,10 +2,7 @@ package main;
 
 import Entity.Lecturer;
 import Entity.Student;
-import objects.BlackBoard;
-import objects.OBJ_Bed;
-import objects.TablesInClassRoom;
-import objects.OBJ_ATM;
+import objects.*;
 
 public class AssetSetter {
     GamePanel gp;
@@ -22,6 +19,21 @@ public class AssetSetter {
             gp.obj[0] = new OBJ_Bed(gp);
             gp.obj[0].worldX = (3 * gp.tileSize);
             gp.obj[0].worldY = 3 * gp.tileSize;
+            gp.obj[1] = new OBJ_SOFA(gp);
+            gp.obj[1].worldX = (9 * gp.tileSize);
+            gp.obj[1].worldY = gp.tileSize;
+            gp.obj[2] = new OBJ_SOFA(gp);
+            gp.obj[2].worldX = (12 * gp.tileSize)-50;
+            gp.obj[2].worldY = gp.tileSize;
+            gp.obj[3] = new OBJ_LEMARI(gp);
+            gp.obj[3].worldX = (14*gp.tileSize);
+            gp.obj[3].worldY = gp.tileSize+(gp.tileSize*3);
+            gp.obj[4] = new OBJ_LEMARI(gp);
+            gp.obj[4].worldX = (14*gp.tileSize);
+            gp.obj[4].worldY = gp.tileSize+(gp.tileSize*5);
+//            gp.obj[5] = new OBJ_POHON(gp);
+//            gp.obj[5].worldX = (gp.tileSize);
+//            gp.obj[5].worldY = (gp.tileSize);
 
             //ini map kelas
         } else if (gp.tileM.currentMap == 2) {

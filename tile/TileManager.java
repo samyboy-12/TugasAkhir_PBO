@@ -84,7 +84,33 @@ public class TileManager {
             BufferedImage originalImage = ImageIO.read(getClass().getResourceAsStream("/objectsPict/bed.png"));
             tile[7].collision = true;
 
+            tile[50] = new Tile();
+            tile[50].image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/table.png"));
+            tile[50].collision = true;
 
+            tile[51] = new Tile();
+            tile[51].image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/drawer.png"));
+            tile[51].collision = true;
+
+            tile[52] = new Tile();
+            tile[52].image = ImageIO.read(getClass().getResourceAsStream("/BG/carpet1.png"));
+
+            tile[53] = new Tile();
+            tile[53].image = ImageIO.read(getClass().getResourceAsStream("/BG/carpet2.png"));
+
+            tile[54] = new Tile();
+            tile[54].image = ImageIO.read(getClass().getResourceAsStream("/BG/carpet3.png"));
+
+            tile[55] = new Tile();
+            tile[55].image = ImageIO.read(getClass().getResourceAsStream("/BG/carpet4.png"));
+
+            tile[56] = new Tile();
+            tile[56].image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/sofamini.png"));
+            tile[56].collision = true;
+
+            tile[57] = new Tile();
+            tile[57].image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/pohon.png"));
+            tile[57].collision = true;
 
             //Tile untuk map Kelas
             tile[8] = new Tile();
