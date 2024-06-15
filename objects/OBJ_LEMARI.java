@@ -13,7 +13,7 @@ public class OBJ_LEMARI extends SuperObject{
         super(gp);
         name= "Lemari";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/cupbord.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/cupbord.png"));
 
         }catch (IOException e) {
             e.printStackTrace();

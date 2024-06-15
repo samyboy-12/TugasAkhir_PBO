@@ -144,9 +144,6 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_S) {
                     gp.gameState = gp.playState;
                 }
-                if (code == KeyEvent.VK_F) {
-                    gp.gameState = gp.finishState;
-                }
             } else if (gp.gameState == gp.dialogueState) {
                 if (code == KeyEvent.VK_B) {
                     if (gp.maincharacter.sudahMengeluh){

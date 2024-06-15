@@ -57,61 +57,31 @@ public class UI {
     }
 
     public void draw(Graphics2D g2) {
-//        if (gameFinished) {
-//            drawFinish();
+        this.g2 = g2;
+        g2.setFont(pixelFont);
+        g2.setColor(Color.WHITE);
 
-//            g2.setFont(arial_40B);
-//            g2.setColor(Color.white);
-//            String text;
-//            int textLength;
-//            int x, y;
-////
-//            text = "You have finished the game!";
-//            textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-//
-//            x = gp.screenWidth / 2 - textLength / 2;
-//            y = gp.screenHeight / 2 - (gp.tileSize);
-//            g2.drawString(text, x, y);
-//
-//            g2.setFont(arial_80B);
-//            g2.setColor(Color.yellow);
-//            text = "Congratulations!";
-//            textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-//            x = gp.screenWidth / 2 - textLength / 2;
-//            y = gp.screenHeight - (gp.tileSize * 5);
-//            g2.drawString(text, x, y);
+        if (gp.gameState == gp.playState) {
 
+        } else if (gp.gameState == gp.sleepState) {
+            drawDialogueScreen();
+        } else if (gp.gameState == gp.pauseState) {
+            drawPauseScreen();
+        } else if (gp.gameState == gp.infoState) {
 
-
-//            gp.gameThread = null;
-
-//        }
-//        else {
-            this.g2 = g2;
-            g2.setFont(pixelFont);
-            g2.setColor(Color.WHITE);
-
-            if (gp.gameState == gp.playState) {
-
-            } else if (gp.gameState == gp.sleepState) {
-                drawDialogueScreen();
-            } else if (gp.gameState == gp.pauseState) {
-                drawPauseScreen();
-            } else if (gp.gameState == gp.infoState) {
-
-            } else if (gp.gameState == gp.dialogueState) {
-                drawDialogueScreen();
-            }else if (gp.gameState == gp.titleState) {
-                drawTitleScreen();
-            } else if (gp.gameState == gp.finishState) {
-                drawFinish();
-            }
-//        }
+        } else if (gp.gameState == gp.dialogueState) {
+            drawDialogueScreen();
+        }else if (gp.gameState == gp.titleState) {
+            drawTitleScreen();
+        } else if (gp.gameState == gp.finishState) {
+            drawFinish();
+        }
     }
 
 
     public void drawFinish(){
-//        System.out.println(sleepScreenState);
+        g2.setColor(Color.BLACK);
+        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
 
         if (sleepScreenState == 0){
 
@@ -119,11 +89,11 @@ public class UI {
             g2.setColor(new Color(0, 0, 0, 150));
             g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
             int x, y;
-            String text = "Selamat! /n Anda sudah menjalani /n satu hari";
+            String text = "Selamat! /n Kamu berhasil bertahan hidup /n sebagai 'Anak Kos' selama satu hari!";
             String[] lines = text.split("/n");
 
             // Set the font for the title
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 70f));
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 46f));
 
             // Draw each line
             y = gp.tileSize * 2;
@@ -147,8 +117,8 @@ public class UI {
             g2.drawImage(gp.maincharacter.down1, x, y, gp.tileSize * 2, gp.tileSize * 2, null);
 
             // MENU
-            g2.setFont(g2.getFont().deriveFont(50f));
-            text = "BACK";
+            g2.setFont(g2.getFont().deriveFont(36f));
+            text = "BACK TO MAIN MENU";
             x = getXforCenteredText(text);
             y += gp.tileSize * 4;
             g2.drawString(text, x, y);

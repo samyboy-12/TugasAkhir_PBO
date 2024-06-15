@@ -135,7 +135,6 @@ public class GamePanel extends JPanel implements Runnable{
                 transitionCounter = 0;
             }
         } else if (gameState == studyState) {
-            System.out.println(transitionCounter);
             transitionCounter++;
             if (transitionCounter >= transitionDuration*5) {
                 if (maincharacter.sudahMengeluh){
@@ -155,8 +154,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void checkMapTransition() {
 
         //ini kondisi untuk pindah dari kamar ke map Jalan raya
-        System.out.println("ini x: "+ maincharacter.x / tileSize+", ini y: "+ maincharacter.y / tileSize );
-        if (maincharacter.x / tileSize >= 15 && maincharacter.y / tileSize >= 10 && tileM.currentMap == 1) {
+        if (maincharacter.x / tileSize >= 14 && maincharacter.y / tileSize >= 10 && tileM.currentMap == 1) {
             startTransition();
             tileM.loadMap("/maps/mapJalan.txt");
             tileM.currentMap = 2;
@@ -195,7 +193,7 @@ public class GamePanel extends JPanel implements Runnable{
             aSetter.setNPC();
 
             //set tempat spawn karakter pada map baru
-            maincharacter.x = 14 * tileSize; //ini berarti baris ke 5
+            maincharacter.x = 13 * tileSize; //ini berarti baris ke 5
             maincharacter.y = 10 * tileSize; //ini berarti kolom ke 5
         }
 
@@ -210,11 +208,12 @@ public class GamePanel extends JPanel implements Runnable{
             aSetter.setNPC();
 
             //set tempat spawn karakter pada map baru
-            maincharacter.x = 14 * tileSize; //ini berarti baris ke 5
-            maincharacter.y = 1 * tileSize; //ini berarti kolom ke 5
+            maincharacter.x = 2 * tileSize; //ini berarti baris ke 5
+            maincharacter.y = 9 * tileSize; //ini berarti kolom ke 5
         }
 
-        else if (maincharacter.x / tileSize <= 0 && maincharacter.y / tileSize >= 0 && tileM.currentMap == 3) {
+        //dari lobby ke kelas
+        else if (maincharacter.x / tileSize >= 15 && maincharacter.y / tileSize >= 0 && tileM.currentMap == 3) {
             startTransition();
             tileM.loadMap("/maps/mapKelas.txt");
             tileM.currentMap = 4;
@@ -226,6 +225,21 @@ public class GamePanel extends JPanel implements Runnable{
             //set tempat spawn karakter pada map baru
             maincharacter.x = 14 * tileSize; //ini berarti baris ke 5
             maincharacter.y = 1 * tileSize; //ini berarti kolom ke 5
+        }
+
+        //dari lobby ke jalan
+        else if (maincharacter.x / tileSize <= 1 && maincharacter.y / tileSize >= 9 && tileM.currentMap == 3) {
+            startTransition();
+            tileM.loadMap("/maps/mapJalan.txt");
+            tileM.currentMap = 2;
+
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
+
+            //set tempat spawn karakter pada map baru
+            maincharacter.x = 13 * tileSize; //ini berarti baris ke 5
+            maincharacter.y = 5 * tileSize; //ini berarti kolom ke 5
         }
     }
 

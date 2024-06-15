@@ -13,7 +13,7 @@ public class OBJ_SOFAMINI extends SuperObject{
         super(gp);
         name= "Sofa mini";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/sofamini.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/sofamini.png"));
 
         }catch (IOException e) {
             e.printStackTrace();

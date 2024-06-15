@@ -1,20 +1,18 @@
 package objects;
 
-import Entity.MainCharacter;
-import Entity.ManKind;
 import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class TablesInClassRoom extends SuperObject {
+public class OBJ_TablesInClassRoom extends SuperObject {
 
-    public TablesInClassRoom(int worldX, int worldY, GamePanel gp){
+    public OBJ_TablesInClassRoom(int worldX, int worldY, GamePanel gp){
         super(gp);
         this.name = "Table";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/assets/objects/tableInClassRoom.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/tableInClassRoom.png"));
         }catch(IOException e){
             e.printStackTrace();
         }

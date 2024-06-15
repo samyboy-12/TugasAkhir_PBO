@@ -14,7 +14,7 @@ public class OBJ_Bed extends SuperObject{
         super(gp);
         name= "Bed";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/bed.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/bed.png"));
 
         }catch (IOException e) {
             e.printStackTrace();
@@ -35,25 +35,19 @@ public class OBJ_Bed extends SuperObject{
     }
     public void interact(){
         if (interactText[interactDialogueIndex] == null){
-//            System.out.println(gp.gameState);
-//            System.out.println("hi");
             interactDialogueIndex = 0;
 
         }else {
-//            System.out.println(gp.gameState);
-//            System.out.println("hi1");
             gp.ui.currentDialogue = interactText[interactDialogueIndex];
             interactDialogueIndex++;
 
         }
-
-//        gp.ui.currentdialogue = dialogues[0];
     }
 
     @Override
     public void setinteractText() {
-        interactText[0] = "Do you want to sleep?";
-        interactText[1] = "Press F to finish";
+        interactText[0] = "Kamu belum bisa menyelesaikan game /nkarena belum beraktivitas layaknya anak kos.";
+        interactText[1] = "Pergi beli makan dan belajarlah sekali /nuntuk menyelesaikan game ini!";
     }
 
     public void draw(Graphics2D g2, GamePanel gp){

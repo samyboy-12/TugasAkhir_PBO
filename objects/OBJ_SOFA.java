@@ -13,7 +13,7 @@ public class OBJ_SOFA extends SuperObject{
         super(gp);
         name= "Sofa";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/sofa.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/sofa.png"));
 
         }catch (IOException e) {
             e.printStackTrace();

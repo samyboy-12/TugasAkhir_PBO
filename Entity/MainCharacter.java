@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MainCharacter extends ManKind implements iMovable {
 
@@ -20,6 +21,16 @@ public class MainCharacter extends ManKind implements iMovable {
     private boolean eligibleToStudy = true;
     public String[] dialoguesMengeluh = new String[5];
     public int dialoguesMengeluhIndex;
+
+    private HashMap<String, Boolean> checkForFinish = new HashMap<String, Boolean>();
+
+    {
+        checkForFinish.put("sudahBelajar", false);
+//        checkForFinish.put("sudahMakan", false);
+    }
+
+
+
 
     public int getMoneyInATM() {
         return moneyInATM;
@@ -142,9 +153,19 @@ public class MainCharacter extends ManKind implements iMovable {
     public void sleep() {
         int objIndex = gp.cChecker.checkObject(this, true);
         if (objIndex != 999) {
-            gp.gameState = gp.sleepState;
-            gp.obj[objIndex].interact();
+            if(this.checkIfALreadyStudyAndEat()){
+                gp.ui.gameFinished = true;
+                gp.gameState = gp.finishState;
+            }else{
+                gp.gameState = gp.sleepState;
+                gp.obj[objIndex].interact();
+            }
         }
+    }
+
+    private boolean checkIfALreadyStudyAndEat(){
+        return this.checkForFinish.get("sudahBelajar");
+//        return this.checkForFinish.get("sudahBelajar") && this.checkForFinish.get("sudahBelajar");
     }
 
     public void interactObject() {
@@ -177,13 +198,10 @@ public class MainCharacter extends ManKind implements iMovable {
         }
     }
 
-    public void finish() {
-        gp.ui.gameFinished = true;
-    }
-
     public void study() {
         int objIndex = gp.cChecker.checkObject(this, true);
         if (this.energyBar - 33 >= 0 && objIndex != 999) {
+            this.checkForFinish.put("sudahBelajar", true);
             this.energyBar -= 33;
             gp.obj[objIndex].interact();
             gp.gameState = gp.studyState;

@@ -6,12 +6,12 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 
-public class BlackBoard extends SuperObject {
-    public BlackBoard(int worldX, int worldY, GamePanel gp){
+public class OBJ_BlackBoard extends SuperObject {
+    public OBJ_BlackBoard(int worldX, int worldY, GamePanel gp){
         super(gp);
         name = "BlackBoard";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/assets/objects/blackBoardInClassRoom.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/blackBoardInClassRoom.png"));
         }catch(IOException e){
             e.printStackTrace();
         }

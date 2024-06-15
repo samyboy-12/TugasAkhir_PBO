@@ -15,7 +15,7 @@ public class OBJ_ATM extends SuperObject {
         super(gp);
         name = "ATM";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/ATM.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/ATM.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

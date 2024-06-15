@@ -13,7 +13,7 @@ public class OBJ_MEJABLJR extends SuperObject{
         super(gp);
         name= "Meja Belajar";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objectsPict/meja1.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/assets/objectsPict/meja1.png"));
 
         }catch (IOException e) {
             e.printStackTrace();
