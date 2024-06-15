@@ -17,8 +17,8 @@ public class AssetSetter {
         //ini map kamar
         if (gp.tileM.currentMap == 1) {
             gp.obj[0] = new OBJ_Bed(gp);
-            gp.obj[0].worldX = (3 * gp.tileSize);
-            gp.obj[0].worldY = 3 * gp.tileSize;
+            gp.obj[0].worldX = (4 * gp.tileSize);
+            gp.obj[0].worldY = gp.tileSize;
             gp.obj[1] = new OBJ_SOFA(gp);
             gp.obj[1].worldX = (9 * gp.tileSize);
             gp.obj[1].worldY = gp.tileSize;
@@ -27,13 +27,25 @@ public class AssetSetter {
             gp.obj[2].worldY = gp.tileSize;
             gp.obj[3] = new OBJ_LEMARI(gp);
             gp.obj[3].worldX = (14*gp.tileSize);
-            gp.obj[3].worldY = gp.tileSize+(gp.tileSize*3);
+            gp.obj[3].worldY = gp.tileSize+(gp.tileSize*4);
             gp.obj[4] = new OBJ_LEMARI(gp);
             gp.obj[4].worldX = (14*gp.tileSize);
-            gp.obj[4].worldY = gp.tileSize+(gp.tileSize*5);
-//            gp.obj[5] = new OBJ_POHON(gp);
-//            gp.obj[5].worldX = (gp.tileSize);
-//            gp.obj[5].worldY = (gp.tileSize);
+            gp.obj[4].worldY = gp.tileSize+(gp.tileSize*6);
+            gp.obj[5] = new OBJ_LEMARIBUKU(gp);
+            gp.obj[5].worldX = (12*gp.tileSize);
+            gp.obj[5].worldY = (gp.tileSize*4)+5;
+            gp.obj[6] = new OBJ_LEMARIBAJU(gp);
+            gp.obj[6].worldX = 20;
+            gp.obj[6].worldY = (gp.tileSize);
+            gp.obj[7] = new OBJ_MEJABLJR(gp);
+            gp.obj[7].worldX = (gp.tileSize)-30;
+            gp.obj[7].worldY = (gp.tileSize*4) + 30;
+            gp.obj[8] = new OBJ_KURSISEPATU(gp);
+            gp.obj[8].worldX = (gp.tileSize*10)+5;
+            gp.obj[8].worldY = (gp.tileSize*10)+20;
+            gp.obj[9] = new OBJ_BOOK(gp);
+            gp.obj[9].worldX = (gp.tileSize)+15;
+            gp.obj[9].worldY = (gp.tileSize*5);
 
             //ini map kelas
         } else if (gp.tileM.currentMap == 2) {
