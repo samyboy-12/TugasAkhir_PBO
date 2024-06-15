@@ -24,7 +24,7 @@ public class AssetSetter {
             gp.obj[0].worldY = 3 * gp.tileSize;
 
             //ini map kelas
-        } else if (gp.tileM.currentMap == 2) {
+        } else if (gp.tileM.currentMap == 4) {
             gp.obj[0] = new TablesInClassRoom(3 * gp.tileSize, 3 * gp.tileSize, gp);
             gp.obj[1] = new TablesInClassRoom(6 * gp.tileSize, 3 * gp.tileSize, gp);
             gp.obj[2] = new TablesInClassRoom(9 * gp.tileSize, 3 * gp.tileSize, gp);
@@ -41,7 +41,7 @@ public class AssetSetter {
         }
 
         //ini map jalan
-        else if (gp.tileM.currentMap == 3) {
+        else if (gp.tileM.currentMap == 2) {
             gp.obj[0] = new OBJ_ATM(gp);
             gp.obj[0].worldX = (9 * gp.tileSize);
             gp.obj[0].worldY = 4 * gp.tileSize;
@@ -54,7 +54,7 @@ public class AssetSetter {
             gp.npc[i] = null;
         }
 
-        if (gp.tileM.currentMap == 2) {
+        if (gp.tileM.currentMap == 4) {
             gp.npc[0] = new Lecturer(gp, "Pak T.U", 40, 3 * gp.tileSize, 1 * gp.tileSize, "/assets/Lecturer.png");
             gp.npc[0].dialogues[0] = "Pak T.U: /nSelamat datang di kelas saya. /n/nSilahkan langsung baca materi /nyang sudah saya share di grup WA";
             gp.npc[0].dialogues[1] = "Pak T.U: /nSilahkan duduk, saya mau lanjut nonton YouTube dulu";

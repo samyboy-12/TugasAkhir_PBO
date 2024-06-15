@@ -158,7 +158,7 @@ public class GamePanel extends JPanel implements Runnable{
         if (maincharacter.x / tileSize >= 15 && maincharacter.y / tileSize >= 10 && tileM.currentMap == 1) {
             startTransition();
             tileM.loadMap("/maps/mapJalan.txt");
-            tileM.currentMap = 3;
+            tileM.currentMap = 2;
 
             //load npc dan karakter pada map baru
             aSetter.setObject();
@@ -168,10 +168,10 @@ public class GamePanel extends JPanel implements Runnable{
             maincharacter.x = 1*tileSize; //ini berarti baris ke 5
             maincharacter.y = 5*tileSize; //ini berarti kolom ke 5
 
-            //dari kelas ke jalan
-        } else if (maincharacter.x / tileSize >= 12 && maincharacter.y / tileSize < 1 && tileM.currentMap == 2) {
+            //dari kelas ke lobby
+        } else if (maincharacter.x / tileSize >= 12 && maincharacter.y / tileSize < 1 && tileM.currentMap == 4) {
             startTransition();
-            tileM.loadMap("/maps/mapJalan.txt");
+            tileM.loadMap("/maps/mapLobbyUniv.txt");
             tileM.currentMap = 3;
 
             //load npc dan karakter pada map baru
@@ -180,11 +180,11 @@ public class GamePanel extends JPanel implements Runnable{
 
             //set tempat spawn karakter pada map baru
             maincharacter.x = 13*tileSize; //ini berarti baris ke 5
-            maincharacter.y = 5*tileSize; //ini berarti kolom ke 5
+            maincharacter.y = 1*tileSize; //ini berarti kolom ke 5
         }
 
         //dari map Jalan raya ke kamar lagi
-        else if (maincharacter.x / tileSize <= 0 && maincharacter.y / tileSize <=4 && tileM.currentMap == 3) {
+        else if (maincharacter.x / tileSize <= 0 && maincharacter.y / tileSize <=4 && tileM.currentMap == 2) {
             startTransition();
             tileM.loadMap("/maps/mapKamar.txt");
             tileM.currentMap = 1;
@@ -198,11 +198,25 @@ public class GamePanel extends JPanel implements Runnable{
             maincharacter.y = 10 * tileSize; //ini berarti kolom ke 5
         }
 
-        //dari jalan ke kelas
-        else if (maincharacter.x / tileSize >= 15 && maincharacter.y / tileSize >= 4 && tileM.currentMap == 3) {
+        //dari jalan ke lobby univ
+        else if (maincharacter.x / tileSize >= 15 && maincharacter.y / tileSize >= 4 && tileM.currentMap == 2) {
+            startTransition();
+            tileM.loadMap("/maps/mapLobbyUniv.txt");
+            tileM.currentMap = 3;
+
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
+
+            //set tempat spawn karakter pada map baru
+            maincharacter.x = 14 * tileSize; //ini berarti baris ke 5
+            maincharacter.y = 1 * tileSize; //ini berarti kolom ke 5
+        }
+
+        else if (maincharacter.x / tileSize <= 0 && maincharacter.y / tileSize >= 0 && tileM.currentMap == 3) {
             startTransition();
             tileM.loadMap("/maps/mapKelas.txt");
-            tileM.currentMap = 2;
+            tileM.currentMap = 4;
 
             //load npc dan karakter pada map baru
             aSetter.setObject();

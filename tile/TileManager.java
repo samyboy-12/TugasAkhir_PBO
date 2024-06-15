@@ -16,31 +16,6 @@ public class TileManager {
     public int mapTileNum[][];
     public int currentMap = 1;
 
-
-//    public GamePanel getGp() {
-//        return gp;
-//    }
-//
-//    public void setGp(GamePanel gp) {
-//        this.gp = gp;
-//    }
-//
-//    public Tile[] getTile() {
-//        return tile;
-//    }
-//
-//    public void setTile(Tile[] tile) {
-//        this.tile = tile;
-//    }
-//
-//    public int[][] getMapTileNum() {
-//        return mapTileNum;
-//    }
-//
-//    public void setMapTileNum(int[][] mapTileNum) {
-//        this.mapTileNum = mapTileNum;
-//    }
-
     public TileManager(GamePanel gp){
 
         this.gp = gp;
@@ -164,6 +139,92 @@ public class TileManager {
             tile[25].collision = false;
 
 
+            //tile untuk map lobby univ
+            tile[26] = new Tile();
+            tile[26].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/cornerCollision.png"));
+            tile[26].collision = true;
+
+            tile[27] = new Tile();
+            tile[27].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/HorizontalCollision.png"));
+            tile[27].collision = true;
+
+            tile[28] = new Tile();
+            tile[28].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/VerticalCollision.png"));
+            tile[28].collision = true;
+
+            tile[29] = new Tile();
+            tile[29].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/lobbyFloor.png"));
+            tile[29].collision = false;
+
+            tile[30] = new Tile();
+            tile[30].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/lobbyWall.png"));
+            tile[30].collision = false;
+
+            tile[31] = new Tile();
+            tile[31].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairFloor.png"));
+            tile[31].collision = false;
+
+            tile[32] = new Tile();
+            tile[32].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairShadowFloor.png"));
+            tile[32].collision = false;
+
+            tile[33] = new Tile();
+            tile[33].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairTopHead.png"));
+            tile[33].collision = false;
+
+            tile[34] = new Tile();
+            tile[34].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairBottomHeadTop.png"));
+            tile[34].collision = false;
+
+            tile[35] = new Tile();
+            tile[35].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairBottomHeadBot.png"));
+            tile[35].collision = false;
+
+            tile[36] = new Tile();
+            tile[36].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/peganganStair.png"));
+            tile[36].collision = false;
+
+            tile[37] = new Tile();
+            tile[37].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairFenceRight.png"));
+            tile[37].collision = false;
+
+            tile[38] = new Tile();
+            tile[38].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/stairFenceLeft.png"));
+            tile[38].collision = false;
+
+            tile[39] = new Tile();
+            tile[39].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetTopLeftTop.png"));
+            tile[39].collision = false;
+
+            tile[40] = new Tile();
+            tile[40].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetTopLeftBot.png"));
+            tile[40].collision = false;
+
+            tile[41] = new Tile();
+            tile[41].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetTopRightTop.png"));
+            tile[41].collision = false;
+
+            tile[42] = new Tile();
+            tile[42].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetTopRightBot.png"));
+            tile[42].collision = false;
+
+            tile[43] = new Tile();
+            tile[43].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetBotRightTop.png"));
+            tile[43].collision = false;
+
+            tile[44] = new Tile();
+            tile[44].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetBotRightBot.png"));
+            tile[44].collision = false;
+
+            tile[45] = new Tile();
+            tile[45].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetBotLeftTop.png"));
+            tile[45].collision = false;
+
+            tile[46] = new Tile();
+            tile[46].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapLobbyUniv/carpetBotLeftBot.png"));
+            tile[46].collision = false;
+
+
 
 //            tile[7].image = resizeImage(originalImage, gp.tileSize*2, gp.tileSize*2 );
         } catch (IOException e){
@@ -204,49 +265,6 @@ public class TileManager {
             e.printStackTrace();
         }
     }
-
-//    public void draw(Graphics2D g2) {
-//        int col = 0;
-//        int row = 0;
-//        int x = 0;
-//        int y = 0;
-//
-//        while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
-//            int tileNum = mapTileNum[col][row];
-//
-//            if (tileNum == 7) {
-//                g2.drawImage(tile[tileNum].image, x, y, gp.tileSize*2 , gp.tileSize*2, null); // Gambar dengan ukuran 32x32
-//                col += 2; // Lewati 1 kolom karena tile ini menempati 2 kolom
-//                x += gp.tileSize * 2; // Geser posisi x untuk dua tile
-//
-//                if (col >= gp.maxScreenCol) {
-//                    col = 0;
-//                    x = 0;
-//                    row++;
-//                }
-////                else {
-////                    // If we're out of bounds, just draw a 1x1 tile to avoid exception
-////                    g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-////                    col++;
-////                    x += gp.tileSize;
-////                }
-//            } else {
-//                g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
-//                col++;
-//                x += gp.tileSize;
-//
-//            }if (col >= gp.maxScreenCol) {
-//                col = 0;
-//                x = 0;
-//                row++;
-//                y += gp.tileSize;
-//            }
-//
-//
-//        }
-//    }
-
-
 
     public void draw (Graphics2D g2){
         int col = 0;
