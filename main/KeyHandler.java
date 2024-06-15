@@ -145,7 +145,7 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.playState;
                 }
                 if (code == KeyEvent.VK_F) {
-                    gp.maincharacter.finish();
+                    gp.gameState = gp.finishState;
                 }
             } else if (gp.gameState == gp.dialogueState) {
                 if (code == KeyEvent.VK_B) {
@@ -170,6 +170,29 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_T) {
                     gp.gameState = gp.playState;
+                }
+            }
+
+
+            if (gp.gameState == gp.finishState ) {
+                if (code == KeyEvent.VK_UP) {
+                    gp.ui.commandNumsleep--;
+                    if (gp.ui.commandNumsleep < 0){
+                        gp.ui.commandNumsleep= 1;
+                    }
+                }
+                if (code == KeyEvent.VK_DOWN) {
+                    gp.ui.commandNumsleep++;
+                    if (gp.ui.commandNumsleep > 1){
+                        gp.ui.commandNumsleep = 0;
+                    }
+                }
+                if (code == KeyEvent.VK_ENTER) {
+                    if (gp.ui.commandNumsleep == 0) {
+                        gp.gameState = gp.titleState;
+                    } if(gp.ui.commandNumsleep == 1){
+                        System.exit(0);
+                    }
                 }
             }
         }
