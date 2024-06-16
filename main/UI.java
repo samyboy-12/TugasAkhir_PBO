@@ -207,10 +207,10 @@ public class UI {
             g2.setColor(Color.WHITE);
             g2.drawString(text,x,y);
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32));
-            text = "'KOS LIFE: GAME SIMULASI ANAK KOS' /n merupakan Lorem ipsum dolor sit amet, consectetur adipiscing elit, /n sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. /nUt enim ad minim veniam, quis nostrud exercitation ullamco";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20));
+            text = "adalah game simulasi 2D yang mengajak pemain untuk merasakan kehidupan sehari-hari /n sebagai seorang anak kos.  Dalam game ini, pemain akan mengendalikan karakter untuk /n menjalani berbagai aktivitas mulai dari keluar kamar, makan di cafe, belajar  di kampus /n hingga tidur untuk mengakhiri hari. Dengan fitur-fitur seperti bergerak dalam empat arah, /n manajemen energi  dengan membeli makan dari hasil uang yang ditarik di ATM, dan interaksi /n dengan NPC  seperti teman dan dosen; pemain akan merasakan serunya menjalani kehidupan /n kos-kosan. Mulailah petualanganmu, nikmati kebebasan menjelajahi lingkungan sekitar,/n dan temukan keseimbangan antara kehidupan sosial dan akademis dalam \"KosLife\"!";
             String[] lines = text.split("/n");
-            y += gp.tileSize * 2; // Positioning the start of the instructions
+            y += gp.tileSize; // Positioning the start of the instructions
             for (String line : lines) {
                 x = getXforCenteredText(line);
                 g2.drawString(line, x, y);
@@ -219,17 +219,17 @@ public class UI {
 
             text = "QUIT TO MAIN MENU";
             x = getXforCenteredText(text);
-            y = gp.tileSize*10;
+            y = gp.tileSize*11;
             g2.drawString(text, x, y);
             if (commandNum == 0){
                 g2.drawString("->", x-gp.tileSize,y);
             }
         } else if (titleScreenState == 2) {
             commandNum = 0;
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 46));
-            String text = "    CONTORL GUIDE FOR 'KOSLIFE: SIMULASI ANAK KOS'";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 44));
+            String text = "         CONTROL GUIDE";
             int x = getXforCenteredText(text)-45;
-            int y = gp.tileSize*2;
+            int y = gp.tileSize;
             //SHADOW
             g2.setColor(Color.GRAY);
             g2.drawString(text,x+4,y+4);
@@ -237,10 +237,25 @@ public class UI {
             g2.setColor(Color.WHITE);
             g2.drawString(text,x,y);
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 30));
-            text = "PRESS '^' TO MOVE UP  /n PRESS '>' TO MOVE RIGHT /n PRESS '<' TO MOVE LEFT /n";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20));
+            text = "Tekan \" ^ \" untuk berjalan ke arah sumbu y+, " +
+                    "Tekan \" v \" untuk berjalan ke arah sumbu y-, /n" +
+                    "Tekan \" > \" untuk berjalan ke arah sumbu x+, " +
+                    "Tekan \" < \" untuk berjalan ke arah sumbu x-, /n" +
+                    "Tekan \" B \" untuk mulai belajar, " +
+                    "Tekan \" S \" untuk tidur, " +
+                    "Tekan \" C \" untuk /n berinteraksi dengan NPC, " +
+                    "Tekan \" I \" untuk melihat informasi pemain/n" +
+                    "Tekan \" T \" untuk melakukan transaksi ATM, " +
+                    "Tekan \" Enter \" untuk memilih opsi menu, /n" +
+                    "Tekan \" P \" untuk pause, " +
+                    "Tekan \" J \" untuk melihat mata kuliah yang diajarkan /n" +
+                    "Tekan tombol keyboard yang sama sebanyak 2 kali untuk memunculkan kotak dialog /n selanjutnya. " +
+
+                    "Pemain bisa menamatkan permainan jika belajar minimal sekali/n" +
+                    "Pemain hanya bisa melakukan aktivitas jika mendekat ke objek yang dituju";
             String[] lines = text.split("/n");
-            y += gp.tileSize * 2; // Positioning the start of the instructions
+            y += gp.tileSize; // Positioning the start of the instructions
             for (String line : lines) {
                 x = getXforCenteredText(line);
                 g2.drawString(line, x, y);
@@ -248,7 +263,7 @@ public class UI {
             }
             text = "QUIT TO MAIN MENU";
             x = getXforCenteredText(text);
-            y += gp.tileSize*3;
+            y += gp.tileSize/4;
             g2.drawString(text, x, y);
             if (commandNum == 0){
                 g2.drawString("->", x-gp.tileSize,y);
