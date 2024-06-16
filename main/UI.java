@@ -238,10 +238,10 @@ public class UI {
             g2.drawString(text,x,y);
 
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20));
-            text = "Tekan \" ^ \" untuk berjalan ke arah sumbu y+, " +
-                    "Tekan \" v \" untuk berjalan ke arah sumbu y-, /n" +
-                    "Tekan \" > \" untuk berjalan ke arah sumbu x+, " +
-                    "Tekan \" < \" untuk berjalan ke arah sumbu x-, /n" +
+            text = "Tekan \" ^ \" untuk berjalan ke arah atas, " +
+                    "Tekan \" v \" untuk berjalan ke arah bawah, /n" +
+                    "Tekan \" > \" untuk berjalan ke arah kanan, " +
+                    "Tekan \" < \" untuk berjalan ke arah kiri, /n" +
                     "Tekan \" B \" untuk mulai belajar, " +
                     "Tekan \" S \" untuk tidur, " +
                     "Tekan \" C \" untuk /n berinteraksi dengan NPC, " +
@@ -252,7 +252,7 @@ public class UI {
                     "Tekan \" J \" untuk melihat mata kuliah yang diajarkan /n" +
                     "Tekan tombol keyboard yang sama sebanyak 2 kali untuk memunculkan kotak dialog /n selanjutnya. " +
 
-                    "Pemain bisa menamatkan permainan jika belajar minimal sekali/n" +
+                    "Pemain bisa menamatkan permainan dengan tekan \" S \" setelah belajar /n minimal sekali. " +
                     "Pemain hanya bisa melakukan aktivitas jika mendekat ke objek yang dituju";
             String[] lines = text.split("/n");
             y += gp.tileSize; // Positioning the start of the instructions
