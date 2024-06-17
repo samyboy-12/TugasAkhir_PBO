@@ -72,6 +72,12 @@ public class AssetSetter {
             gp.obj[0].worldX = (9 * gp.tileSize);
             gp.obj[0].worldY = 4 * gp.tileSize;
         }
+        // Ini map Restaurant
+        else if (gp.tileM.currentMap == 5) {
+            gp.obj[0] = new OBJ_KASIRRESTAURANT(gp);
+            gp.obj[0].worldX = (8 * gp.tileSize);
+            gp.obj[0].worldY = 6 * gp.tileSize;
+        }
 
     }
 

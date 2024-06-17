@@ -256,6 +256,19 @@ public class GamePanel extends JPanel implements Runnable{
             maincharacter.x = 13 * tileSize; //ini berarti baris ke 5
             maincharacter.y = 5 * tileSize; //ini berarti kolom ke 5
         }
+        else if (maincharacter.x / tileSize == 11  && maincharacter.y / tileSize == 3 && tileM.currentMap == 5) {
+            startTransition();
+            tileM.loadMap("/maps/mapJalan.txt");
+            tileM.currentMap = 2;
+
+            //load npc dan karakter pada map baru
+            aSetter.setObject();
+            aSetter.setNPC();
+
+            //set tempat spawn karakter pada map baru
+            maincharacter.x = 6 * tileSize; //ini berarti baris ke 5
+            maincharacter.y = 3 * tileSize; //ini berarti kolom ke 3
+        }
     }
 
     //set transisi
