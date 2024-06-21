@@ -243,7 +243,7 @@ public class GamePanel extends JPanel implements Runnable{
         }
 
         //dari jalan ke Restaurant
-        else if (maincharacter.x / tileSize == 6  && maincharacter.y / tileSize == 1 && tileM.currentMap == 2) {
+        else if (maincharacter.x / tileSize <=15  && maincharacter.y / tileSize == 1 && tileM.currentMap == 2) {
             startTransition();
             tileM.loadMap("/maps/mapRestaurant.txt");
             tileM.currentMap = 5;
