@@ -311,7 +311,9 @@ public class TileManager {
             tile[99].collision = true;
 
             tile[100] = new Tile();
+
             tile[100].image = ImageIO.read(getClass().getResourceAsStream("/BG/tile_3_10.png"));
+
             tile[100].collision = true;
 
             tile[101] = new Tile();

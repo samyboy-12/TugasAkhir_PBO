@@ -237,7 +237,7 @@ public class UI {
             g2.setColor(Color.WHITE);
             g2.drawString(text,x,y);
 
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20));
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 18));
             text = "Tekan \" ^ \" untuk berjalan ke arah atas, " +
                     "Tekan \" v \" untuk berjalan ke arah bawah, /n" +
                     "Tekan \" > \" untuk berjalan ke arah kanan, " +
@@ -249,10 +249,11 @@ public class UI {
                     "Tekan \" T \" untuk melakukan transaksi ATM, " +
                     "Tekan \" Enter \" untuk memilih opsi menu, /n" +
                     "Tekan \" P \" untuk pause, " +
-                    "Tekan \" J \" untuk melihat mata kuliah yang diajarkan /n" +
-                    "Tekan tombol keyboard yang sama sebanyak 2 kali untuk memunculkan kotak dialog /n selanjutnya. " +
+                    "Tekan \" J \" untuk melihat mata kuliah yang diajarkan. " +
+                    "Tekan tombol keyboard /n yang sama sebanyak 2 kali untuk memunculkan kotak dialog selanjutnya. " +
 
-                    "Pemain bisa menamatkan permainan dengan tekan \" S \" setelah belajar /n minimal sekali. " +
+                    "Pemain bisa menamatkan /n permainan dengan tekan \" S \" setelah belajar dan makan  minimal sekali. " +
+                    "Jika kecapean, maka /n pemain berjalan lambat. " +
                     "Pemain hanya bisa melakukan aktivitas jika mendekat ke objek yang dituju";
             String[] lines = text.split("/n");
             y += gp.tileSize; // Positioning the start of the instructions
