@@ -4,6 +4,7 @@ import Entity.MainCharacter;
 import Entity.ManKind;
 import objects.SuperObject;
 import tile.TileManager;
+import objects.OBJ_CAR;
 
 import javax.swing.*;
 import java.awt.*;
@@ -134,6 +135,9 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
     public void update() {
+        if (tileM.currentMap == 2) {
+            ((OBJ_CAR) obj[1]).move();
+        }
         if (gameState == playState) {
             maincharacter.update();
             checkMapTransition();
@@ -159,6 +163,7 @@ public class GamePanel extends JPanel implements Runnable{
                 transitionCounter = 0;
             }
         }
+
     }
 
     //Fungsi untuk berpindah map
