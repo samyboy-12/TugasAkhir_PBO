@@ -139,7 +139,7 @@ public class GamePanel extends JPanel implements Runnable{
             ((OBJ_CAR) obj[1]).move();
         }
         if (gameState == playState) {
-            maincharacter.update();
+            maincharacter.move();
             checkMapTransition();
         } else if (gameState == pauseState) {
             // Handle pause state

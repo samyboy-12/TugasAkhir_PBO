@@ -104,7 +104,8 @@ public class MainCharacter extends ManKind implements iMovable {
         }
     }
 
-    public void update() {
+    //implement interface move
+    public void move() {
         if (keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true) {
             if (keyH.upPressed == true) {
                 direction = "up";
