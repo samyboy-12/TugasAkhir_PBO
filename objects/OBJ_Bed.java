@@ -46,8 +46,8 @@ public class OBJ_Bed extends SuperObject{
 
     @Override
     public void setinteractText() {
-        interactText[0] = "Kamu belum bisa menyelesaikan game /nkarena belum beraktivitas layaknya anak kos.";
-        interactText[1] = "Pergi beli makan dan belajarlah sekali /nuntuk menyelesaikan game ini!";
+        interactText[0] = "                  --------------SISTEM------------/n/nKAMU BELUM BISA MENYELESAIKAN GAME INI /nKARENA BELUM BERAKTIVITAS LAYAKNYA ANAK KOS.";
+        interactText[1] = "                  --------------SISTEM------------/n/nPERGI BELI MAKAN KE WARMINDO DAN BELAJARLAH KE KAMPUS/nMINIMAL SEKALI UNTUK MENYELESAIKAN GAME INI";
     }
 
     public void draw(Graphics2D g2, GamePanel gp){

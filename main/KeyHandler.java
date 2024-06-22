@@ -104,7 +104,7 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_T) {
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
                     int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
-                    if (objIndex != 999){
+                    if (objIndex != 999 && gp.obj[objIndex].name != "Table" ){
                         gp.maincharacter.transaction(gp.obj[objIndex]);
                     }else if (npcIndex != 999) {
                         gp.maincharacter.transaction(gp.npc[npcIndex]);

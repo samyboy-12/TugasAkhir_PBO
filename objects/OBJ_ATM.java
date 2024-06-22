@@ -28,14 +28,14 @@ public class OBJ_ATM extends SuperObject {
     public void interact() {
         MainCharacter mainCharacter = gp.maincharacter;
         if (interactDialogueIndex == 0) {
-            gp.ui.currentDialogue = "-----------------------ATM BIR-----------------------/nSALDO ANDA: "+mainCharacter.getMoneyInATM()+"/n/nAPAKAH KAMU YAKIN AKAN MENGAMBIL UANG Rp.50.000 ?/n(TEKAN HURUF 'T' KEMBALI)";
+            gp.ui.currentDialogue = "-----------------------ATM BIR-----------------------/nSALDO ANDA: "+mainCharacter.getMoneyInATM()+"/n/nAPAKAH KAMU YAKIN AKAN MENGAMBIL UANG Rp.50.000 ?/n(TEKAN HURUF 'T' DUA KALI UNTUK TARIK TUNAI)";
             interactDialogueIndex = 1;
         }
         else if (interactDialogueIndex == 1){
             if (mainCharacter.getMoneyInATM() >= withdrawalAmount) {
                 mainCharacter.setCash(mainCharacter.getCash() + withdrawalAmount);
                 mainCharacter.setMoneyInATM(mainCharacter.getMoneyInATM()-withdrawalAmount);
-                gp.ui.currentDialogue = "/n/n       ANDA TELAH MENARIK UANG TUNAI SEBESAR : Rp. " + withdrawalAmount;
+                gp.ui.currentDialogue = "/n/n     ANDA TELAH MENARIK UANG TUNAI SEBESAR : Rp. " + withdrawalAmount;
             } else {
                 gp.ui.currentDialogue = "/n/n           UANG DI ATM ANDA TIDAK CUKUP!";
             }

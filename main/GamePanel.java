@@ -112,12 +112,23 @@ public class GamePanel extends JPanel implements Runnable{
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime)/drawInterval;
             lastTime = currentTime;
-            if(delta>=1){ //saat delta mencapai 1 detik
-                //update an information such as current character position
-                update();
-                // draw a character based on the current position
-                repaint(); //call paintComponent method
-                delta--;//hapus ulang delta jadi 0
+            //Jika pemain sudah kelelahan maka dia akan berjalan lebih lambat dari normalnya
+            if (maincharacter.getEnergyBar()<=30){
+                if(delta>=2){ //saat delta mencapai 1 detik
+                    //update an information such as current character position
+                    update();
+                    // draw a character based on the current position
+                    repaint(); //call paintComponent method
+                    delta=0;//hapus ulang delta jadi 0
+                }
+            }else{
+                if(delta>=1){ //saat delta mencapai 1 detik
+                    //update an information such as current character position
+                    update();
+                    // draw a character based on the current position
+                    repaint(); //call paintComponent method
+                    delta--;//hapus ulang delta jadi 0
+                }
             }
 
         }
@@ -136,7 +147,7 @@ public class GamePanel extends JPanel implements Runnable{
             }
         } else if (gameState == studyState) {
             transitionCounter++;
-            if (transitionCounter >= transitionDuration*5) {
+            if (transitionCounter >= transitionDuration*3) {
                 if (maincharacter.sudahMengeluh){
                     gameState = playState;
                     maincharacter.sudahMengeluh = false;
@@ -256,6 +267,7 @@ public class GamePanel extends JPanel implements Runnable{
             maincharacter.x = 13 * tileSize; //ini berarti baris ke 5
             maincharacter.y = 5 * tileSize; //ini berarti kolom ke 5
         }
+        //dari resto ke jalan
         else if (maincharacter.x / tileSize == 11  && maincharacter.y / tileSize == 3 && tileM.currentMap == 5) {
             startTransition();
             tileM.loadMap("/maps/mapJalan.txt");

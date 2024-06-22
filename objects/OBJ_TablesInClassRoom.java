@@ -37,7 +37,7 @@ public class OBJ_TablesInClassRoom extends SuperObject {
     }
 
     public void setinteractText(){
-        this.interactText[0] = "/n                SAAT INI PEMAIN SEDANG BELAJAR. /n/n    ----Tekan huruf 'B' kembali untuk berhenti belajar---";
+//        this.interactText[0] = "/n                SAAT INI PEMAIN SEDANG BELAJAR. /n/n    ----Tekan huruf 'B' kembali untuk berhenti belajar---";
     }
 
     public void draw(Graphics2D g2, GamePanel gp){

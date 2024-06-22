@@ -261,7 +261,7 @@ public class UI {
                 g2.drawString(line, x, y);
                 y += gp.tileSize; // Move y position for next line
             }
-            text = "QUIT TO MAIN MENU";
+            text = "QUIT";
             x = getXforCenteredText(text);
             y += gp.tileSize/4;
             g2.drawString(text, x, y);

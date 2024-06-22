@@ -22,15 +22,12 @@ public class MainCharacter extends ManKind implements iMovable {
     public String[] dialoguesMengeluh = new String[5];
     public int dialoguesMengeluhIndex;
 
-    private HashMap<String, Boolean> checkForFinish = new HashMap<String, Boolean>();
+    public HashMap<String, Boolean> checkForFinish = new HashMap<String, Boolean>();
 
     {
         checkForFinish.put("sudahBelajar", false);
-//        checkForFinish.put("sudahMakan", false);
+        checkForFinish.put("sudahMakan", false);
     }
-
-
-
 
     public int getMoneyInATM() {
         return moneyInATM;
@@ -52,7 +49,9 @@ public class MainCharacter extends ManKind implements iMovable {
     }
 
     public void setEnergyBar(int energyBar) {
-        this.energyBar = energyBar;
+        if (this.energyBar<100){
+            this.energyBar = energyBar;
+        }
     }
 
     public boolean isEligibleToStudy() {
@@ -164,8 +163,7 @@ public class MainCharacter extends ManKind implements iMovable {
     }
 
     private boolean checkIfALreadyStudyAndEat(){
-        return this.checkForFinish.get("sudahBelajar");
-//        return this.checkForFinish.get("sudahBelajar") && this.checkForFinish.get("sudahBelajar");
+        return this.checkForFinish.get("sudahBelajar") && this.checkForFinish.get("sudahMakan");
     }
 
     public void interactObject() {
