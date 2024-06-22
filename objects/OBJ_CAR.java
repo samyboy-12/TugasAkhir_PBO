@@ -11,8 +11,10 @@ public class OBJ_CAR extends SuperObject implements iMovable {
     public GamePanel gp;
     private int CARspeed;
     public int CARposition = 15;
+    private long lastUpdateTime;
+    private final long updateInterval;
 
-    public OBJ_CAR(GamePanel gp) {
+    public OBJ_CAR(GamePanel gp, int fps) {
         super(gp);
         name = "CAR";
         try {
@@ -23,6 +25,8 @@ public class OBJ_CAR extends SuperObject implements iMovable {
         collision = true;
         this.gp = gp;
         this.CARspeed = 1; // Set the car speed
+        this.updateInterval = 100 / fps;
+        this.lastUpdateTime = System.currentTimeMillis();
     }
 
     @Override
@@ -33,11 +37,15 @@ public class OBJ_CAR extends SuperObject implements iMovable {
     //implement interface move
     @Override
     public void move() {
-        CARposition -= CARspeed;
-        if (CARposition < -100) {
-            CARposition = 100;
-        }
-        // Update worldX to reflect new CARposition
-        worldX = CARposition * gp.tileSize;
-    }
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastUpdateTime >= updateInterval) {
+            CARposition -= CARspeed;
+            if (CARposition < -40) {
+                CARposition = 40;
+            }
+            // Update worldX to reflect new CARposition
+            worldX = CARposition * gp.tileSize;
+            lastUpdateTime = currentTime;
+  }
+ }
 }

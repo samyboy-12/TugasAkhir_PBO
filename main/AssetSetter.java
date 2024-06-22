@@ -73,7 +73,7 @@ public class AssetSetter {
             gp.obj[0].worldX = (9 * gp.tileSize);
             gp.obj[0].worldY = 4 * gp.tileSize;
 
-            gp.obj[1] = new OBJ_CAR(gp);
+            gp.obj[1] = new OBJ_CAR(gp,2);
             gp.obj[1].worldX = ((OBJ_CAR) gp.obj[1]).CARposition * gp.tileSize;
             gp.obj[1].worldY = 6 * gp.tileSize;
         }
