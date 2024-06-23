@@ -93,7 +93,10 @@ public class KeyHandler implements KeyListener {
                     gp.maincharacter.study();
                 }
                 if (code == KeyEvent.VK_C) {
-                    gp.maincharacter.communicate();
+                    int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
+                    if (npcIndex != 999 && gp.npc[npcIndex].getName() != "Mba Ayu") {
+                        gp.maincharacter.communicate();
+                    }
                 }
                 if (code == KeyEvent.VK_J) {
                     gp.maincharacter.interactObject();
@@ -104,9 +107,9 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_T) {
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
                     int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
-                    if (objIndex != 999 && gp.obj[objIndex].name != "Table" ){
+                    if (objIndex != 999 && gp.obj[objIndex].name == "ATM" ){
                         gp.maincharacter.transaction(gp.obj[objIndex]);
-                    }else if (npcIndex != 999) {
+                    }else if (npcIndex != 999 && gp.npc[npcIndex].getName() == "Mba Ayu") {
                         gp.maincharacter.transaction(gp.npc[npcIndex]);
                     }else{
 

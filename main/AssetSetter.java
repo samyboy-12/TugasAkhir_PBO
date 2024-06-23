@@ -167,7 +167,6 @@ public class AssetSetter {
         }
         //ini map lobby
         else if (gp.tileM.currentMap == 3) {
-            //4,2  4,6  8,2        10,11   14,11
             ArrayList<String> coursesTaught= new ArrayList<>();
             coursesTaught.add("Praktikum OOP");
             coursesTaught.add("Pnegantar Teknologi Informasi");
