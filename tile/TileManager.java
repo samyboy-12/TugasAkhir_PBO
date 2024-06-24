@@ -1103,6 +1103,21 @@ public class TileManager {
             tile[296].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapRestaurant/image_part_192.png"));
             tile[296].collision = false;
 
+            tile[297] = new Tile();
+            tile[297].image = ImageIO.read(getClass().getResourceAsStream("/BG/bubble.png"));
+
+            tile[298] = new Tile();
+            tile[298].image = ImageIO.read(getClass().getResourceAsStream("/BG/bubblejalan.png"));
+
+            tile[299] = new Tile();
+            tile[299].image = ImageIO.read(getClass().getResourceAsStream("/BG/bubbleshop.png"));
+
+            tile[300] = new Tile();
+            tile[300].image = ImageIO.read(getClass().getResourceAsStream("/BG/bubblelobi.png"));
+
+            tile[301] = new Tile();
+            tile[301].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapKelas/bubblekelas.png"));
+
 
 
 
