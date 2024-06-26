@@ -22,7 +22,7 @@ public class OBJ_MEJABLJR extends SuperObject{
         this.gp = gp;
 
         //ngegedein ukuran solid area mengikuti gambar
-        this.solidArea.width *= 2;
+        this.solidArea.width *= 1;
         this.solidArea.height *= 2;
     }
 
