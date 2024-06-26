@@ -89,9 +89,7 @@ public class AssetSetter {
             gp.obj[0].worldY = (1 * gp.tileSize);
             gp.obj[1] = new OBJ_LOKER(gp);
             gp.obj[1].worldX = (3 * gp.tileSize);
-            gp.
-
-        [1].worldY = (1 * gp.tileSize);
+            gp.obj[1].worldY = (1 * gp.tileSize);
 //            gp.obj[1] = new OBJ_LEMARIBAJU(gp);
 //            gp.obj[1].worldX = (9 * gp.tileSize);
 //            gp.obj[1].worldY = (9 * gp.tileSize);
