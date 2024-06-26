@@ -84,24 +84,35 @@ public class AssetSetter {
 
         // Ini map Lobby
         else if (gp.tileM.currentMap == 3) {
-            gp.obj[0] = new OBJ_LEMARIBUKU(gp);
-            gp.obj[0].worldX = (2 * gp.tileSize);
-            gp.obj[0].worldY = (2 * gp.tileSize);
-            gp.obj[1] = new OBJ_LEMARIBUKU(gp);
-            gp.obj[1].worldX = (2 * gp.tileSize);
-            gp.obj[1].worldY = (5 * gp.tileSize);
-            gp.obj[2] = new OBJ_LEMARIBUKU(gp);
-            gp.obj[2].worldX = (5 * gp.tileSize);
-            gp.obj[2].worldY = (2 * gp.tileSize);
-            gp.obj[3] = new OBJ_LEMARIBUKU(gp);
-            gp.obj[3].worldX = (5 * gp.tileSize);
-            gp.obj[3].worldY = (5 * gp.tileSize);
-            gp.obj[4] = new OBJ_LEMARIBUKU(gp);
-            gp.obj[4].worldX = (8 * gp.tileSize);
-            gp.obj[4].worldY = (2 * gp.tileSize);
-            gp.obj[5] = new OBJ_LEMARIBUKU(gp);
-            gp.obj[5].worldX = (8 * gp.tileSize);
-            gp.obj[5].worldY = (5 * gp.tileSize);
+            gp.obj[0] = new OBJ_LOKER(gp);
+            gp.obj[0].worldX = (1 * gp.tileSize);
+            gp.obj[0].worldY = (1 * gp.tileSize);
+            gp.obj[1] = new OBJ_LOKER(gp);
+            gp.obj[1].worldX = (3 * gp.tileSize);
+            gp.
+
+        [1].worldY = (1 * gp.tileSize);
+//            gp.obj[1] = new OBJ_LEMARIBAJU(gp);
+//            gp.obj[1].worldX = (9 * gp.tileSize);
+//            gp.obj[1].worldY = (9 * gp.tileSize);
+//            gp.obj[0] = new OBJ_LEMARIBUKU(gp);
+//            gp.obj[0].worldX = (1 * gp.tileSize);
+//            gp.obj[0].worldY = (1 * gp.tileSize);
+//            gp.obj[1] = new OBJ_LEMARIBUKU(gp);
+//            gp.obj[1].worldX = (2 * gp.tileSize);
+//            gp.obj[1].worldY = (5 * gp.tileSize);
+//            gp.obj[2] = new OBJ_LEMARIBUKU(gp);
+//            gp.obj[2].worldX = (5 * gp.tileSize);
+//            gp.obj[2].worldY = (2 * gp.tileSize);
+//            gp.obj[3] = new OBJ_LEMARIBUKU(gp);
+//            gp.obj[3].worldX = (5 * gp.tileSize);
+//            gp.obj[3].worldY = (5 * gp.tileSize);
+//            gp.obj[4] = new OBJ_LEMARIBUKU(gp);
+//            gp.obj[4].worldX = (8 * gp.tileSize);
+//            gp.obj[4].worldY = (2 * gp.tileSize);
+//            gp.obj[5] = new OBJ_LEMARIBUKU(gp);
+//            gp.obj[5].worldX = (8 * gp.tileSize);
+//            gp.obj[5].worldY = (5 * gp.tileSize);
         }
 
 
