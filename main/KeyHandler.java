@@ -85,7 +85,7 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_S) {
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
-                    if (gp.obj[objIndex].name == "Bed"){
+                    if (objIndex!=999 && gp.obj[objIndex].name == "Bed"){
                         gp.maincharacter.sleep();
                     }
                 }

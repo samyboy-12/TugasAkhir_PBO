@@ -1117,6 +1117,7 @@ public class TileManager {
 
             tile[301] = new Tile();
             tile[301].image = ImageIO.read(getClass().getResourceAsStream("/BG/MapKelas/bubblekelas.png"));
+            tile[301].collision = true;
 
             tile[302] = new Tile();
             tile[302].image = ImageIO.read(getClass().getResourceAsStream("/BG/loker.png"));
