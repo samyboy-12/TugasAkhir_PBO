@@ -2,6 +2,7 @@ package main;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Objects;
 
 public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed;
@@ -85,7 +86,7 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_S) {
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
-                    if (objIndex!=999 && gp.obj[objIndex].name == "Bed"){
+                    if (objIndex!=999 && Objects.equals(gp.obj[objIndex].name, "Bed")){
                         gp.maincharacter.sleep();
                     }
                 }
@@ -94,15 +95,21 @@ public class KeyHandler implements KeyListener {
                 }
                 if (code == KeyEvent.VK_B) {
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
-                    if (objIndex != 999 && gp.obj[objIndex].name == "Table"){
+                    if (objIndex != 999 && Objects.equals(gp.obj[objIndex].name, "Table")){
                         gp.maincharacter.study();
                     }
                 }
                 if (code == KeyEvent.VK_C) {
                     int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
-                    if (npcIndex != 999 && objIndex != 999 &&  gp.npc[npcIndex].getName() != "Mba Ayu" && gp.obj[objIndex].name != "ATM") {
-                        gp.maincharacter.communicate();
+                    if (npcIndex != 999){
+                        if (!Objects.equals(gp.npc[npcIndex].getName(), "Mba Ayu")) {
+                            gp.maincharacter.communicate();
+                        }
+                    } else if (objIndex != 999) {
+                        if (!Objects.equals(gp.obj[objIndex].name, "ATM")) {
+
+                        }
                     }
                 }
                 if (code == KeyEvent.VK_J) {
@@ -114,9 +121,9 @@ public class KeyHandler implements KeyListener {
                 if (code == KeyEvent.VK_T) {
                     int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
                     int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
-                    if (objIndex != 999 && gp.obj[objIndex].name == "ATM" ){
+                    if (objIndex != 999 && Objects.equals(gp.obj[objIndex].name, "ATM")){
                         gp.maincharacter.transaction(gp.obj[objIndex]);
-                    }else if (npcIndex != 999 && gp.npc[npcIndex].getName() == "Mba Ayu") {
+                    }else if (npcIndex != 999 && Objects.equals(gp.npc[npcIndex].getName(), "Mba Ayu")) {
                         gp.maincharacter.transaction(gp.npc[npcIndex]);
                     }else{
 
