@@ -113,7 +113,12 @@ public class KeyHandler implements KeyListener {
                     }
                 }
                 if (code == KeyEvent.VK_J) {
-                    gp.maincharacter.interactObject();
+                    int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
+                    //karena hanya objek blackboard yg bisa diinteraksi
+                    if (objIndex !=999 && gp.obj[objIndex].name == "BlackBoard"){
+                        gp.maincharacter.interactObject();
+
+                    }
                 }
                 if (code == KeyEvent.VK_I) {
                     gp.maincharacter.displayInfo();
