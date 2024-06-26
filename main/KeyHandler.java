@@ -84,17 +84,24 @@ public class KeyHandler implements KeyListener {
                     gp.gameState = gp.pauseState;
                 }
                 if (code == KeyEvent.VK_S) {
-                    gp.maincharacter.sleep();
+                    int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
+                    if (gp.obj[objIndex].name == "Bed"){
+                        gp.maincharacter.sleep();
+                    }
                 }
                 if (code == KeyEvent.VK_I) {
                     gp.maincharacter.displayInfo();
                 }
                 if (code == KeyEvent.VK_B) {
-                    gp.maincharacter.study();
+                    int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
+                    if (objIndex != 999 && gp.obj[objIndex].name == "Table"){
+                        gp.maincharacter.study();
+                    }
                 }
                 if (code == KeyEvent.VK_C) {
                     int npcIndex = gp.cChecker.checkEntity(gp.maincharacter, gp.npc);
-                    if (npcIndex != 999 && gp.npc[npcIndex].getName() != "Mba Ayu") {
+                    int objIndex = gp.cChecker.checkObject(gp.maincharacter, true);
+                    if (npcIndex != 999 && objIndex != 999 &&  gp.npc[npcIndex].getName() != "Mba Ayu" && gp.obj[objIndex].name != "ATM") {
                         gp.maincharacter.communicate();
                     }
                 }

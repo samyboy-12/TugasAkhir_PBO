@@ -22,8 +22,8 @@ public class OBJ_RESEPSIONIS extends SuperObject{
         this.gp = gp;
 
         //ngegedein ukuran solid area mengikuti gambar
-        this.solidArea.width *= 1;
-        this.solidArea.height *= 2;
+        this.solidArea.width *= 3;
+        this.solidArea.height *=1;
     }
 
     public void draw(Graphics2D g2, GamePanel gp){
