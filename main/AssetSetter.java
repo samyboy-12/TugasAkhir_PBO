@@ -90,12 +90,12 @@ public class AssetSetter {
             gp.obj[1] = new OBJ_LOKER(gp);
             gp.obj[1].worldX = (3 * gp.tileSize);
             gp.obj[1].worldY = (1 * gp.tileSize);
-            gp.obj[2] = new OBJ_MEJABLJR(gp);
-            gp.obj[2].worldX = (gp.tileSize*13);
+            gp.obj[2] = new OBJ_MEJALOBBY(gp);
+            gp.obj[2].worldX = (gp.tileSize*14);
             gp.obj[2].worldY = (gp.tileSize*4);
 
-            gp.obj[3] = new OBJ_MEJABLJR(gp);
-            gp.obj[3].worldX = (gp.tileSize*13);
+            gp.obj[3] = new OBJ_MEJALOBBY(gp);
+            gp.obj[3].worldX = (gp.tileSize*14);
             gp.obj[3].worldY = (gp.tileSize*9);
 
             gp.obj[4] = new OBJ_SOFAMINI(gp);
@@ -104,6 +104,31 @@ public class AssetSetter {
             gp.obj[5] = new OBJ_SOFAMINI(gp);
             gp.obj[5].worldX = (gp.tileSize*3);
             gp.obj[5].worldY = gp.tileSize*11;
+
+            gp.obj[6] = new OBJ_HIASAN(gp);
+            gp.obj[6].worldX = (gp.tileSize*2);
+            gp.obj[6].worldY = (gp.tileSize*11);
+
+            gp.obj[7] = new OBJ_HIASAN(gp);
+            gp.obj[7].worldX = (gp.tileSize*7);
+            gp.obj[7].worldY = (gp.tileSize*11);
+
+            gp.obj[8] = new OBJ_HIASAN(gp);
+            gp.obj[8].worldX = (gp.tileSize*1);
+            gp.obj[8].worldY = (gp.tileSize*7);
+
+            gp.obj[9] = new OBJ_HIASAN(gp);
+            gp.obj[9].worldX = (gp.tileSize*5);
+            gp.obj[9].worldY = (gp.tileSize*1);
+
+            gp.obj[10] = new OBJ_MEJALOBBY(gp);
+            gp.obj[10].worldX = (gp.tileSize*1);
+            gp.obj[10].worldY = (gp.tileSize*4);
+
+            gp.obj[11] = new OBJ_RESEPSIONIS(gp);
+            gp.obj[11].worldX = (gp.tileSize*8);
+            gp.obj[11].worldY = (gp.tileSize*2);
+
         }
 
 
