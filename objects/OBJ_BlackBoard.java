@@ -32,6 +32,6 @@ public class OBJ_BlackBoard extends SuperObject {
     }
 
     public void setinteractText(){
-        this.interactText[0] = "                   Materi Pembelajaran /n         Object Oriented Programming (OOP) Java. /n/n-Tekan huruf 'T' kembali untuk berhenti membaca papan tulis-";
+        this.interactText[0] = "                   Materi Pembelajaran /n         Object Oriented Programming (OOP) Java. /n/n-Tekan huruf 'J' kembali untuk berhenti membaca papan tulis-";
     }
 }

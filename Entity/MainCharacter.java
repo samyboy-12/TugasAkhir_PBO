@@ -79,7 +79,7 @@ public class MainCharacter extends ManKind implements iMovable {
         setDialogue();
         this.setMengeluh();
         this.energyBar = 100;
-        this.moneyInATM = 10000000;
+        this.moneyInATM = 100000;
     }
 
     public void setDefaultValues() {
