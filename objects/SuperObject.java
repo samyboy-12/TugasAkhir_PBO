@@ -5,7 +5,7 @@ import main.GamePanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class SuperObject {
+public abstract class SuperObject {
     GamePanel gp;
     public BufferedImage image;
     public String name;
