@@ -50,6 +50,7 @@ public class AssetSetter {
             gp.obj[9].worldX = (gp.tileSize)+15;
             gp.obj[9].worldY = (gp.tileSize*5);
 
+
             //ini map kelas
         } else if (gp.tileM.currentMap == 4) {
             gp.obj[0] = new OBJ_TablesInClassRoom(3 * gp.tileSize, 3 * gp.tileSize, gp);
@@ -129,6 +130,35 @@ public class AssetSetter {
             gp.obj[11].worldX = (gp.tileSize*8);
             gp.obj[11].worldY = (gp.tileSize*2);
 
+            gp.obj[20] = new OBJ_Bubble1(gp);
+            gp.obj[20].worldX = (gp.tileSize*10)-10;
+            gp.obj[20].worldY = (gp.tileSize-20);
+
+            gp.obj[21] = new OBJ_Bubble1(gp);
+            gp.obj[21].worldX = (gp.tileSize*9)-5;
+            gp.obj[21].worldY = (gp.tileSize*10);
+
+            gp.obj[22] = new OBJ_Bubble1(gp);
+            gp.obj[22].worldX = (gp.tileSize*11)-5;
+            gp.obj[22].worldY = (gp.tileSize*10);
+
+            gp.obj[23] = new OBJ_Bubble1(gp);
+            gp.obj[23].worldX = (gp.tileSize*4);
+            gp.obj[23].worldY = (gp.tileSize*6);
+
+
+            gp.obj[24] = new OBJ_Bubble1(gp);
+            gp.obj[24].worldX = (gp.tileSize*9);
+            gp.obj[24].worldY = (gp.tileSize*6);
+
+            gp.obj[25] = new OBJ_Bubble1(gp);
+            gp.obj[25].worldX = (gp.tileSize*3)-10;
+            gp.obj[25].worldY = (gp.tileSize*3);
+//
+            gp.obj[26] = new OBJ_Bubble1(gp);
+            gp.obj[26].worldX = (gp.tileSize*7);
+            gp.obj[26].worldY = (gp.tileSize*3);
+
         }
 
 
@@ -205,7 +235,7 @@ public class AssetSetter {
             gp.npc[1].dialogues[0] = "Mbak Restu: /n/nSemangat ngerjain Proyek PPBO!";
             gp.npc[1].dialogues[1] = "Pemain: /n/nMakasih, semangat ngerjain T.A nya juga mbak!";
 
-            gp.npc[2] = new Student(gp, "Budi", 23, 8 * gp.tileSize, 4 * gp.tileSize, "/assets/Student.png", "TPRL", 6);
+            gp.npc[2] = new Student(gp, "Budi", 23, 8 * gp.tileSize, 7 * gp.tileSize, "/assets/Student.png", "TPRL", 6);
             gp.npc[2].dialogues[0] = "Budi: /n/nHalo! nama saya Budi";
             gp.npc[2].dialogues[1] = "Pemain: /n/nHalo Budi, salam kenal ya";
 
@@ -216,7 +246,7 @@ public class AssetSetter {
             gp.npc[4] = new Student(gp, "Mas Farhan", 21, 8 * gp.tileSize, 11 * gp.tileSize, "/assets/Student.png", "TPRL", 4);
             gp.npc[4].dialogues[0] = "Mas Farhan: /n/nEhh masuk kelas cepet, itu Pak T.U udah dikelas";
             gp.npc[4].dialogues[1] = "Pemain: /n/nKelasnya dimana ya mas?";
-            gp.npc[4].dialogues[2] = "Mas Farhan: /n/nItu ada di sebelah kanan atas";
+            gp.npc[4].dialogues[2] = "Mas Farhan: /n/n Coba nanya resepsionist";
             gp.npc[4].dialogues[3] = "Pemain: /n/nSiap makasih mas";
 
             ArrayList<String> coursesTaught1= new ArrayList<>();
@@ -226,8 +256,10 @@ public class AssetSetter {
             gp.npc[5].dialogues[1] = "Pemain: /n/nTerima kasih sudah mengingatkan Pak";
 
             gp.npc[6] = new Student(gp, "Ica", 19, 9 * gp.tileSize, 1 * gp.tileSize, "/assets/NPC/chinese_woman_resized.png", "TPRL", 2);
-            gp.npc[6].dialogues[0] = "Ica: /n/nHaii";
-            gp.npc[6].dialogues[1] = "Pemain: /n/nHaii jugaaa";
+            gp.npc[6].dialogues[0] = "Pemain: /n/n Kelas Pa T.U dimana ya?";
+            gp.npc[6].dialogues[1] = "Resepsionist: /n/n Itu pintu masuk di dekat mu itu";
+            gp.npc[6].dialogues[2] = "Pemain: /n/n Makasih Mba";
+            gp.npc[6].dialogues[3] = "Resepsionist: /n/n sip";
 
         }
         // ini map resto
