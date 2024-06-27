@@ -1171,19 +1171,6 @@ public class TileManager {
         int y = 0;
         while(col<gp.maxScreenCol && row<gp.maxScreenRow ){
             int tileNum = mapTileNum[col][row];
-//            if(tileNum == 7){
-//                g2.drawImage(tile[tileNum].image,x,y,gp.tileize*2, gp.tileize*2, null);
-//                col += 2; // Lewati 1 kolom karena tile ini menempati 2 kolom
-//                x += gp.tileize * 2; // Geser posisi x untuk dua tile
-//                continue;
-//            }if(tileNum == 8){
-//                x += gp.tileize; // Geser posisi x untuk dua tile
-////                continue;
-//            }
-//            else {
-//                g2.drawImage(tile[tileNum].image,x,y,gp.tileize, gp.tileize, null);
-//            }
-
                 g2.drawImage(tile[tileNum].image,x,y,gp.tileSize, gp.tileSize, null);
 
             col++;
